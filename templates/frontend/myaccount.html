@@ -1,0 +1,219 @@
+{% extends "frontend/base.html" %} {% load static %} {% block content %}
+<section class="card">
+    <div class="container">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Main content -->
+            <section class="content">
+                <div class="row">
+                    <div class="col-md-3">
+                        <!-- Profile Image -->
+                        <div class="box box-primary">
+                            <h3 class="profile-username text-center">Nina Mcintire
+                            </h3>
+
+                            <div class="box-body box-profile">
+                                <img class="profile-user-img img-responsive
+                                    rounded-circle img-circle" src="{% static 'frontend/assets/img/users/jenny.jpg'%}" alt="User profile picture" />
+
+                                <ul class="list-group list-group-unbordered">
+                                    <li class="list-group-item">
+                                        <b>Active Bookings</b>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Past Bookings</b>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>My Wishlist</b>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>My Sheeky Points</b>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>My Referrals</b>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>My Purchases</b>
+                                    </li>
+                                </ul>
+
+                                <a href="#" class="btn btn-primary btn-block"><b>Change
+                                        Password</b></a>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-md-9">
+                        <div class="nav-tabs-custom">
+
+                            <div class="tab-content" style="padding-top: 10%">
+                                <div class="active tab-pane" id="activity">
+                                    <!-- Post -->
+                                    <div class="post">
+                                        <!-- /.user-block -->
+                                        <div class="margin-bottom">
+
+                                            <div class="col-sm-6" style="padding-top: 0%;">
+                                                <div class="card">
+                                                    <h4 style="padding-left:
+                                                        5%;">Previous Treatments</h4>
+                                                    <div class="col-sm-12 card">
+                                                        <img class="img-responsive" src="{% static 'frontend/assets/img/sheeky/sheeky-10.jpg'%}" alt="Photo" />
+                                                    </div>
+                                                    <div class="col-sm-12 card">
+                                                        <img class="img-responsive" src="{% static 'frontend/assets/img/sheeky/sheeky-12.jpg' %}" alt="Photo" />
+                                                    </div>
+                                                    <div class="col-sm-12 card">
+                                                        <img class="img-responsive" src="{% static 'frontend/assets/img/sheeky/sheeky-5.jpg' %}" alt="Photo" />
+                                                    </div>
+                                                    <div class="col-sm-12 card">
+                                                        <img class="img-responsive" src="{% static 'frontend/assets/img/sheeky/sheeky-17.jpg' %}" alt="Photo" />
+                                                    </div>
+
+                                                    <!-- /.col -->
+                                                </div>
+                                                <!-- /.row -->
+                                            </div>
+                                            <!-- /.col -->
+                                        </div>
+                                        <!-- /.row -->
+                                    </div>
+                                    <!-- /.post -->
+                                </div>
+
+                                <!-- About Me Box -->
+                                <div class="box box-primary card" style="padding-top: 0%">
+                                    <div class="box-header with-border" style="padding-left: 10%">
+                                        <h3 class="box-title">About Me</h3>
+                                    </div>
+                                    <div style="padding-left: 5%">
+                                        <div class="box-body">
+                                            <strong><i class="fa fa-heart
+                                                    margin-r-5"></i>Favorite
+                                                Hairstyle</strong>
+
+                                            <p class="text-muted">Dreadlocks</p>
+                                            <hr />
+
+                                            <strong><i class="fa fa-laugh
+                                                    margin-r-5"></i>
+                                                Nickname</strong>
+
+                                            <p class="text-muted">California</p>
+                                            <hr />
+
+                                            <strong><i class="fa fa-angry
+                                                    margin-r-5"></i> Skin/Hair
+                                                Problem I've Struggled With For
+                                                A Long Time</strong>
+
+                                            <p class="text-muted">None</p>
+
+                                            <hr />
+
+                                            <strong><i class="fa fa-smile-beam
+                                                    margin-r-5"></i>My Skin and
+                                                Hair
+                                                Products</strong>
+
+                                            <ol>
+                                                <p>
+                                                    <li><span class="label
+                                                            label-danger">Product
+                                                            A</span></li>
+                                                    <li>
+                                                        <span class="label
+                                                            label-success">Product
+                                                            B</span>
+                                                    </li>
+                                                    <li><span class="label
+                                                            label-info">Product
+                                                            C</span></li>
+                                                    <li>
+                                                        <span class="label
+                                                            label-warning">Product
+                                                            D</span>
+                                                    </li>
+                                                    <li>
+                                                        <span class="label
+                                                            label-primary">Product
+                                                            E</span>
+                                                    </li>
+                                                </p>
+                                            </ol>
+
+                                            <hr />
+
+                                            <strong><i class="fa fa-calendar
+                                                    margin-r-5"></i>My Daily
+                                                Hair
+                                                Ritual</strong>
+
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <!-- /.box-body -->
+                                    <div class="tab-pane" id="timeline">
+                                        <!-- The timeline -->
+                                        <div class="timeline timeline-inverse" style="padding-left: 5%">
+                                            <div class="timeline-item">
+                                                <h3 class="timeline-header">
+                                                    <i class="fa fa-comment
+                                                        margin-r-5"></i> My SheekyHub Posts
+                                                </h3>
+
+                                                <div class="timeline-body">
+                                                    Take me to your leader! Switzerland is small and neutral! We are more like Germany, ambitious and misunderstood!
+                                                </div>
+                                                <span class="time"><i class="fa
+                                                        fa-clock"></i> 27 mins
+                                                    ago</span>
+                                                <div class="timeline-footer">
+                                                    <a class="btn btn-warning
+                                                        btn-flat btn-xs">View
+                                                        Other Posts</a>
+                                                </div>
+                                            </div>
+
+                                            <div class="timeline-item">
+
+
+                                                <h3 class="timeline-header">
+                                                    <i class="fa fa-comment
+                                                        margin-r-5"></i> My Reviews
+                                                </h3>
+
+                                                <div class="timeline-body">
+                                                    Take me to your leader! Switzerland is small and neutral! We are more like Germany, ambitious and misunderstood!
+                                                </div>
+                                                <span class="time"><i class="fa
+                                                        fa-clock"></i> 27 mins
+                                                    ago</span>
+                                                <div class="timeline-footer">
+                                                    <a class="btn btn-warning
+                                                        btn-flat btn-xs">View
+                                                        Other Reviews</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.box -->
+                            </div>
+                            <!-- /.nav-tabs-custom -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+            </section>
+            <!-- /.content -->
+            </div>
+            <!-- /.content-wrapper -->
+        </div>
+        <!-- ./wrapper -->
+</section>
+{% endblock %}
