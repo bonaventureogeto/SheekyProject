@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages, auth
+from django.contrib.auth.models import User
 
 
 #Home page
@@ -39,3 +41,29 @@ def myAccount(request):
 #help
 def help(request):
     return render(request, 'frontend/help.html')
+
+
+#register
+def register(request):
+    return render(request, 'frontend/register.html')
+
+
+#login
+def login(request):
+    """ view for login """
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+
+        user = auth.authenticate(email=email, password=password)
+
+        if user is not None:
+            auth.login(request, user)
+            messages.success(request, 'You are now logged in')
+            return redirect('dashboard')
+
+        else:
+            messages.error(request, 'Invalid email or password')
+            return redirect('login')
+    else:
+        return render(request, 'frontend/login.html')
