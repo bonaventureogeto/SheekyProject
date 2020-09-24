@@ -32,11 +32,24 @@ class Customer(models.Model):
     def __str__(self):
         return self.name
 
+
+class Department(models.Model):
+    """
+    models for departments in sheeky
+    """
+    department_name = models.CharField(max_length=100)
+
+    def __str__(self):
+        """repr for department"""
+        return self.department_name
+
+
 class ServiceCategory(models.Model):
     """ 
     models for service category
     """
     category_name = models.CharField(max_length=100)
+    department = models.ForeignKey(Department, on_delete=models.CASCADE)
 
     def __str__(self):
         """repr for service category"""
@@ -49,6 +62,7 @@ class ServiceSubCategory(models.Model):
     """
     subcategory_name = models.CharField(max_length=100)
     service_category = models.ForeignKey(ServiceCategory, on_delete=models.CASCADE)
+    department = models.ForeignKey(Department, on_delete=models.CASCADE)
 
     def __str__(self):
         """repr for service subcategory"""
@@ -63,6 +77,7 @@ class Service(models.Model):
     price = models.IntegerField()
     description = models.TextField()
     staff_assigned = models.CharField(max_length=100)
+    department = models.ForeignKey(Department, on_delete=models.CASCADE)
     service_category = models.ForeignKey(ServiceCategory, on_delete=models.CASCADE)
     service_subcategory = models.ForeignKey(ServiceSubCategory, on_delete=models.CASCADE)
     main_photo = models.ImageField(upload_to='photos/%Y/%m/%d/')
