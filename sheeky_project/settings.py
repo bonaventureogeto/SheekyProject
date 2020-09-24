@@ -13,6 +13,11 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 from django.contrib.messages import constants as messages
 import os
 
+import environ
+
+# env = environ.Env()
+# # reading .env file
+environ.Env.read_env()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -23,7 +28,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
-SECRET_KEY = 'bndsadt632498374d7qx./,cn^&jkdbsf'
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
