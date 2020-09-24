@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Customer, Service, ServiceCategory, ServiceSubCategory, Booking, SheekyHub, ContactUs, AboutUs
+from .models import Customer, Service, Department, ServiceCategory, ServiceSubCategory, Booking, IndexPage
 
 
 class CustomerAdmin(admin.ModelAdmin):
@@ -18,6 +18,16 @@ class ServiceAdmin(admin.ModelAdmin):
     list_per_page = 25
 
 admin.site.register(Service, ServiceAdmin)
+
+
+class DepartmentAdmin(admin.ModelAdmin):
+    list_display = ('id', 'department_name')
+    list_display_links = ('id', 'department_name')
+    search_fields = ('department_name',)
+    list_per_page = 25
+
+admin.site.register(Department, DepartmentAdmin)
+
 
 class ServiceCategoryAdmin(admin.ModelAdmin):
     list_display = ('id', 'category_name')
@@ -43,25 +53,11 @@ class BookingAdmin(admin.ModelAdmin):
 
 admin.site.register(Booking, BookingAdmin)
 
-class SheekyHubAdmin(admin.ModelAdmin):
-    list_display = ('id', 'latest_youtube_video_link')
-    list_display_links = ('id', 'latest_youtube_video_link')
-    list_per_page = 25
-
-admin.site.register(SheekyHub, SheekyHubAdmin)
-
-class ContactUsAdmin(admin.ModelAdmin):
+class IndexPageAdmin(admin.ModelAdmin):
     list_display = ('id', 'email', 'phone_no', 'location')
-    list_display_links = ('id', 'email')
-    search_fields = ('location', 'email', 'phone_no')
+    list_display_links = ('id', 'email', 'phone_no', 'location')
+    search_fields = ('email', 'phone_no', 'location')
     list_per_page = 25
 
-admin.site.register(ContactUs, ContactUsAdmin)
+admin.site.register(IndexPage, IndexPageAdmin)
 
-class AboutUsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'about_us', 'staff_name', 'staff_description')
-    list_display_links = ('id', 'about_us')
-    search_fields = ('staff_name', 'staff_description')
-    list_per_page = 25
-
-admin.site.register(AboutUs, AboutUsAdmin)

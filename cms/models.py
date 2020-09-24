@@ -107,44 +107,28 @@ class Booking(models.Model):
         return self.suggested_time
 
 
-class SheekyHub(models.Model):
+class IndexPage(models.Model):
     """
-    models for sheekyhub
-    """
-    latest_youtube_video_link = models.CharField(max_length=255)
-
-    def __str__(self):
-        """repr for sheekyhub"""
-        return self.latest_youtube_video_link
-
-
-class ContactUs(models.Model):
-    """
-    models for contact us page
+    models for index page
     """
     email = models.CharField(max_length=255)
     phone_no = models.CharField(max_length=20)
     location = models.CharField(max_length=255)
+    about_us = models.TextField(max_length=255)
     facebook_link = models.CharField(max_length=255)
     twitter_link = models.CharField(max_length=255)
     youtube_link = models.CharField(max_length=255)
+    snapchat_link = models.CharField(max_length=255)
     linkedin_link = models.CharField(max_length=255)
     instagram_link = models.CharField(max_length=255)
+    latest_youtube_video_link = models.CharField(max_length=255)
+    background_photo = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
+    testimonials = models.TextField(blank=True)
+    testimonial_author = models.CharField(max_length=255, default='anonymous')
+    testimonial_author_position = models.CharField(max_length=255, default='unknown')
+    testimonial_author_photo = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
+
     
     def __str__(self):
         """repr for contact us"""
         return self.email
-
-
-class AboutUs(models.Model):
-    """
-    models for about us page
-    """
-    about_us = models.TextField(max_length=255)
-    staff_name = models.CharField(max_length=100)
-    staff_description = models.CharField(max_length=100)
-
-    def __str__(self):
-        """repr for staff description"""
-        return self.staff_description
-

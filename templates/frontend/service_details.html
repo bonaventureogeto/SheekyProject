@@ -1,4 +1,6 @@
-{% extends "frontend/base.html" %} {% load static %} {% block content %}
+{% extends "frontend/base.html" %} {% load static %} {% load humanize %}
+<!-- content -->
+{%block content %}
 <!--Section: Block Content-->
 <section class="mb-5">
   {% if service %} {% for service_detail in service %}
@@ -88,7 +90,7 @@
       </ul>
       <p>
         <span class="mr-1">
-          Price: <strong>KSH. {{ service_detail.price }}</strong>
+          Price: <strong>KSH. {{ service_detail.price | intcomma }}</strong>
         </span>
       </p>
       <p class="pt-1">{{ service_detail.description }}</p>

@@ -1,7 +1,9 @@
 {% extends "frontend/base.html" %} {% load static %} {% block content %}
 <!-- home
     ================================================== -->
-<section id="home" class="s-home target-section" data-parallax="scroll" data-image-src="{% static 'frontend/assets/img/sheeky/sheeky-13.jpg' %}" data-natural-width=3000 data-natural-height=2000 data-position-y=top style="padding-bottom: 15%;">
+{% if index %}
+{% for value in index %}
+<section id="home" class="s-home target-section" data-parallax="scroll" data-image-src="{{ value.background_photo.url }}" data-natural-width=3000 data-natural-height=2000 data-position-y=top style="padding-bottom: 15%;">
 
     <div class="shadow-overlay"></div>
 
@@ -28,35 +30,35 @@
     <ul class="home-social">
         <li class="home-social-title">Follow Us</li>
         <li>
-            <a href="#0">
+            <a href="{{ value.facebook_link }}">
                 <i class="fab fa-facebook"></i>
                 <span class="home-social-text">Facebook</span>
             </a>
         </li>
         <li>
-            <a href="#0">
+            <a href="{{ value.twitter_link }}">
                 <i class="fab fa-twitter"></i>
                 <span class="home-social-text">Twitter</span>
             </a>
         </li>
         <li>
-            <a href="#0">
+            <a href="{{ value.linkedin_link }}">
                 <i class="fab fa-linkedin"></i>
                 <span class="home-social-text">LinkedIn</span>
             </a>
         </li>
         <li>
-            <a href="#0"><i class="fab fa-instagram"></i>
+            <a href="{{ value.instagram_link }}"><i class="fab fa-instagram"></i>
                 <span class="home-social-text">Instagram</span>
             </a>
         </li>
         <li>
-            <a href="#0"><i class="fab fa-youtube"></i>
+            <a href="{{ value.youtube_link }}"><i class="fab fa-youtube"></i>
                 <span class="home-social-text">YouTube</span>
             </a>
         </li>
         <li>
-            <a href="#0"><i class="fab fa-snapchat"></i>
+            <a href="{{ value.snapchat_link }}"><i class="fab fa-snapchat"></i>
                 <span class="home-social-text">Snapchat</span>
             </a>
         </li>
@@ -91,7 +93,7 @@
             <h5>Latest YouTube Videos</h5>
 
             <div class="video-container">
-                <iframe src="https://youtube.com/video/14592941?title=0&amp;byline=0&amp;portrait=0&amp;color=F64B39" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                <iframe src="{{ value.latest_youtube_video_link }}" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
             </div>
 
         </div>
@@ -131,35 +133,34 @@
             <div class="col-full testimonials__slider">
 
                 <div class="testimonials__slide">
-                    <img src="{% static 'frontend/images/avatars/user-01.jpg' %}" alt="Author
+                    <img src="{{ value.testimonial_author_photo.url }}" alt="Author
                         image" class="testimonials__avatar">
-                    <p>Qui ipsam temporibus quisquam velMaiores eos cumque distinctio nam accusantium ipsum. Laudantium quia consequatur molestias delectus culpa facere hic dolores aperiam. Accusantium quos qui praesentium corpori.</p>
+                    <p>{{ value.testimonials }}</p>
                     <div class="testimonials__author">
-                        Tim Cook
-                        <span>CEO, Apple</span>
+                        {{ value.testimonial_author }}
+                        <span>{{ value.testimonial_author_position }}</span>
                     </div>
                 </div>
                 <!-- end testimonials__slide -->
 
                 <div class="testimonials__slide">
-                    <img src="{% static 'frontend/images/avatars/user-05.jpg' %}" alt="Author
+                    <img src="{{ value.testimonial_author_photo.url }}" alt="Author
                         image" class="testimonials__avatar">
-                    <p>Excepturi nam cupiditate culpa doloremque deleniti repellat. Veniam quos repellat voluptas animi adipisci. Nisi eaque consequatur. Quasi voluptas eius distinctio. Atque eos maxime. Qui ipsam temporibus quisquam vel.</p>
+                    <p>{{ value.testimonials }}</p>
                     <div class="testimonials__author">
-                        Sundar Pichai
-                        <span>CEO, Google</span>
+                        {{ value.testimonial_author }}
+                        <span>{{ value.testimonial_author_position }}</span>
                     </div>
                 </div>
                 <!-- end testimonials__slide -->
 
                 <div class="testimonials__slide">
-                    <img src="{% static 'frontend/images/avatars/user-02.jpg' %}" alt="Author
+                    <img src="{{ value.testimonial_author_photo.url }}" alt="Author
                         image" class="testimonials__avatar">
-                    <p>Repellat dignissimos libero. Qui sed at corrupti expedita voluptas odit. Nihil ea quia nesciunt. Ducimus aut sed ipsam. Autem eaque officia cum exercitationem sunt voluptatum accusamus. Quasi voluptas eius distinctio.
-                    </p>
+                    <p>{{ value.testimonials }}</p>
                     <div class="testimonials__author">
-                        Satya Nadella
-                        <span>CEO, Microsoft</span>
+                        {{ value.testimonial_author }}
+                        <span>{{ value.testimonial_author_position }}</span>
                     </div>
                 </div>
                 <!-- end testimonials__slide -->
@@ -197,7 +198,7 @@
                     <i class="fa fa-address-card" style="color: brown;"></i>
                 </div>
                 <div class="service-text">
-                    <a href="index.html">
+                    <a href="{% url 'index' %}">
                         <h3 class="h4">Visit Our Website</h3>
                     </a>
                     <!-- <p>Nemo cupiditate ab quibusdam quaerat impedit magni.
@@ -211,7 +212,7 @@
                     <i class="fa fa-file-archive" style="color: brown;"></i>
                 </div>
                 <div class="service-text">
-                    <a href="index.html">
+                    <a href="{% url 'index' %}">
                         <h3 class="h4">Check Out All The Services We Have Prepared For You</h3>
                     </a>
                     <!-- <p>Nemo cupiditate ab quibusdam quaerat impedit magni.
@@ -225,7 +226,7 @@
                     <i class="fa fa-check-circle" style="color: brown;"></i>
                 </div>
                 <div class="service-text">
-                    <a href="index.html">
+                    <a href="{% url 'index' %}">
                         <h3 class="h4">Select The Services You Need</h3>
                     </a>
                     <!-- <p>Nemo cupiditate ab quibusdam quaerat impedit magni.
@@ -239,7 +240,7 @@
                     <i class="fa fa-envelope" style="color: brown;"></i>
                 </div>
                 <div class="service-text">
-                    <a href="booking.html">
+                    <a href="{% url 'index' %}">
                         <h3 class="h4">Book An Appointment With Us</h3>
                     </a>
                     <!-- <p>Nemo cupiditate ab quibusdam quaerat impedit magni.
@@ -253,7 +254,7 @@
                     <i class="icon-car" style="color: brown;"></i>
                 </div>
                 <div class="service-text">
-                    <a href="location.html">
+                    <a href="{% url 'index' %}">
                         <h3 class="h4">Come For Your Treatment</h3>
                     </a>
                     <!-- <p>Nemo cupiditate ab quibusdam quaerat impedit magni.
@@ -267,7 +268,7 @@
                     <i class="icon-comment" style="color: brown;"></i>
                 </div>
                 <div class="service-text">
-                    <a href="sheekyhub.html">
+                    <a href="{% url 'index' %}">
                         <h3 class="h4">Review Us on SheekyHub and Follow Us On Social Media</h3>
                     </a>
                     <!-- <p>Nemo cupiditate ab quibusdam quaerat impedit magni.
@@ -300,8 +301,7 @@
     <div class="row" data-aos="fade-up">
         <div class="col-full">
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse.
+                {{ value.about_us }}
             </p>
         </div>
     </div>
@@ -330,12 +330,11 @@
             <p>
                 <span class="fa fa-envelope"> Shoot Us An Email:</span>
                 <br>
-                <a href="mailto:#0" class="contact-email">hello@sheeky.com</a>
+                <a href="mailto:#0" class="contact-email">{{ value.email }}</a>
                 <br>
                 <br>
                 <span><i class="icon-phone"></i> Give Us A Call</span>
-                <span class="contact-number">+1 (917) 123 456 / +1 (917)
-                    333 987</span>
+                <span class="contact-number">{{ value.phone_no }}</span>
             </p>
         </div>
         <!-- end contact-main -->
@@ -349,7 +348,7 @@
             <h3 class="subhead subhead--light">Where To Find Us</h3>
 
             <p class="contact-address">
-                1600 Amphitheatre Parkway<br> Mountain View, CA<br> 94043 US
+                {{ value.location }}
             </p>
         </div>
         <!-- end contact-secondary -->
@@ -359,28 +358,22 @@
 
             <ul class="contact-social">
                 <li>
-                    <a href="#0"><i class="fab fa-facebook"></i></a>
+                    <a href="{{ value.facebook_link }}"><i class="fab fa-facebook"></i></a>
                 </li>
                 <li>
-                    <a href="#0"><i class="fab fa-twitter"></i></a>
+                    <a href="{{ value.twitter_link }}"><i class="fab fa-twitter"></i></a>
                 </li>
                 <li>
-                    <a href="#0"><i class="fab fa-instagram"></i></a>
+                    <a href="{{ value.instagram_link }}"><i class="fab fa-instagram"></i></a>
                 </li>
                 <li>
-                    <a href="#0"><i class="fab fa-behance"></i></a>
+                    <a href="{{ value.youtube_link }}"><i class="fab fa-youtube"></i></a>
                 </li>
                 <li>
-                    <a href="#0"><i class="fab fa-dribbble"></i></a>
+                    <a href="{{ value.linkedin_link }}"><i class="fab fa-linkedin"></i></a>
                 </li>
                 <li>
-                    <a href="#0"><i class="fab fa-youtube"></i></a>
-                </li>
-                <li>
-                    <a href="#0"><i class="fab fa-linkedin"></i></a>
-                </li>
-                <li>
-                    <a href="#0"><i class="fab fa-snapchat"></i></a>
+                    <a href="{{ value.snapchat_link }}"><i class="fab fa-snapchat"></i></a>
                 </li>
             </ul>
             <!-- end contact-social -->
@@ -448,4 +441,11 @@
 
 </div>
 <!-- end photoSwipe background -->
+{% endfor %}
+{% else %}
+    <div class="col-md-12">
+        <img src="{% static 'frontend/images/logo.png' %}" alt="Homepage">
+    </div>
+{% endif %}
+
 {% endblock %}

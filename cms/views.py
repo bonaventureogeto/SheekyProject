@@ -2,12 +2,18 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages, auth
 from django.contrib.auth.models import User
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
-from .models import Customer, Service, ServiceCategory, ServiceSubCategory, Booking, SheekyHub, ContactUs, AboutUs
+from .models import Customer, Service, ServiceCategory, ServiceSubCategory, Booking, IndexPage
 
 
 #Home page
 def index(request):
-    return render(request, 'frontend/index.html')
+    index = IndexPage.objects.all()
+
+    context = {
+        'index': index
+    }
+
+    return render(request, 'frontend/index.html', context)
 
 
 #Salon
