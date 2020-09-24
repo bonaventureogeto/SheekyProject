@@ -1,68 +1,30 @@
-{% extends "frontend/base.html" %}
+{% extends "frontend/base.html" %} {% load static %} {% block content %}
 
-{% load static %}
-
-{% block content %}
 <!-- Listings -->
 <section id="listings" class="py-4">
-    <div class="container">
-        <div class="row">
-            <!-- Listing 1 -->
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card listing-preview">
-                    <div class="card-body">
-                        <div class="listing-heading text-center">
-                            <h4 class="text-primary">Hair</h4>
-                        </div>
-                        <hr />
-                        <a href="hair.html" class="btn btn-primary btn-block">More
-                            Info</a>
-                    </div>
-                </div>
+  <div class="container">
+    <div class="row">
+      {% if service_category %} {% for category in service_category %}
+      <!-- Listing 1 -->
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card listing-preview">
+          <div class="card-body">
+            <div class="listing-heading text-center">
+              <h4 class="text-primary">Hair</h4>
             </div>
-
-            <!-- Listing 2 -->
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card listing-preview">
-                    <div class="card-body">
-                        <div class="listing-heading text-center">
-                            <h4 class="text-primary">Beard</h4>
-                        </div>
-                        <hr />
-                        <a href="hair.html" class="btn btn-primary btn-block">More
-                            Info</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Listing 4 -->
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card listing-preview">
-                    <div class="card-body">
-                        <div class="listing-heading text-center">
-                            <h4 class="text-primary">Skin</h4>
-                        </div>
-                        <hr />
-                        <a href="hair.html" class="btn btn-primary btn-block">More
-                            Info</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Listing 5 -->
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card listing-preview">
-                    <div class="card-body">
-                        <div class="listing-heading text-center">
-                            <h4 class="text-primary">Products</h4>
-                        </div>
-                        <hr />
-                        <a href="products.html" class="btn btn-primary
-                            btn-block">More Info</a>
-                    </div>
-                </div>
-            </div>
+            <hr />
+            <a href="/service-categories" class="btn btn-primary btn-block">
+              More Info
+            </a>
+          </div>
         </div>
+      </div>
+      {% endfor %} {% else %}
+      <div class="col-md-12">
+        <p>No Barber Service Availabe</p>
+      </div>
+      {% endif %}
     </div>
+  </div>
 </section>
 {% endblock %}

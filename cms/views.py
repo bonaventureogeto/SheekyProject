@@ -1,6 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages, auth
 from django.contrib.auth.models import User
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+from .models import Customer, Service, ServiceCategory, ServiceSubCategory, Booking, SheekyHub, ContactUs, AboutUs
 
 
 #Home page
@@ -10,7 +12,13 @@ def index(request):
 
 #Salon
 def salon(request):
-    return render(request, 'frontend/salon.html')
+    service_category = ServiceCategory.objects.all()
+
+    context = {
+        'service_category': service_category
+    }
+
+    return render(request, 'frontend/salon.html', context)
 
 
 #Barber
@@ -20,27 +28,66 @@ def barber(request):
 
 #serviceCategories
 def serviceCategories(request):
-    return render(request, 'frontend/service_categories.html')
+    service_subcategory = ServiceSubCategory.objects.all()
+
+    context = {
+        'service_subcategory': service_subcategory
+    }
+
+    return render(request, 'frontend/service_categories.html', context)
 
 
 #serviceSubCategories
 def serviceSubCategories(request):
-    return render(request, 'frontend/service_subcategories.html')
+    service = Service.objects.all()
+
+    context = {
+        'service': service
+    }
+
+    return render(request, 'frontend/service_subcategories.html', context)
 
 
 #servicedetails
 def serviceDetails(request):
-    return render(request, 'frontend/service_details.html')
+    service = Service.objects.all()
+
+    context = {
+        'service': service
+    }
+    
+    return render(request, 'frontend/service_details.html', context)
+
+
+# def service(request, service_id):
+#     service = get_object_or_404(Service, pk=service_id)
+
+#     context = {
+#         'service': service
+#     }
+
+#     return render(request, 'frontend/service_details.html', context)
 
 
 #myaccount
 def myAccount(request):
-    return render(request, 'frontend/myaccount.html')
+    customer = Customer.objects.all()
+
+    context = {
+        'customer': customer
+    }
+
+    return render(request, 'frontend/myaccount.html', context)
 
 
 #help
 def help(request):
     return render(request, 'frontend/help.html')
+
+
+#booking-page
+def bookingPage(request):
+    return render(request, 'frontend/booking_page.html')
 
 
 #register

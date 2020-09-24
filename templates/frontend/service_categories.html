@@ -1,155 +1,31 @@
-{% extends "frontend/base.html" %}
-
-{% load static %}
-
-{% block content %}
+{% extends "frontend/base.html" %} {% load static %} {% block content %}
 
 <!-- Listings -->
 <section id="listings" class="py-4">
-    <div class="container">
-        <div class="row">
-            <!-- Listing 1 -->
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card listing-preview">
-                    <div class="card-body">
-                        <div class="listing-heading text-center">
-                            <h4 class="text-primary">Braids</h4>
-                        </div>
-                        <hr />
-                        <a href="/service-subcategories" class="btn btn-primary
-                            btn-block">More
-                            Info</a>
-                    </div>
-                </div>
+  <div class="container">
+    <div class="row">
+      {% if service_subcategory %} {% for subcategory in service_subcategory %}
+      <!-- Listing 1 -->
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card listing-preview">
+          <div class="card-body">
+            <div class="listing-heading text-center">
+              <h4 class="text-primary">{{subcategory.subcategory_name}}</h4>
             </div>
-
-            <!-- Listing 2 -->
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card listing-preview">
-                    <div class="card-body">
-                        <div class="listing-heading text-center">
-                            <h4 class="text-primary">Weaves</h4>
-                        </div>
-                        <hr />
-                        <a href="braids.html" class="btn btn-primary btn-block">More
-                            Info</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Listing 3-->
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card listing-preview">
-                    <div class="card-body">
-                        <div class="listing-heading text-center">
-                            <h4 class="text-primary">Dreadlocks</h4>
-                        </div>
-                        <hr />
-                        <a href="braids.html" class="btn btn-primary btn-block">More
-                            Info</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Listing 4 -->
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card listing-preview">
-                    <div class="card-body">
-                        <div class="listing-heading text-center">
-                            <h4 class="text-primary">Natural Hairstyles</h4>
-                        </div>
-                        <hr />
-                        <a href="braids.html" class="btn btn-primary btn-block">More
-                            Info</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Listing 5 -->
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card listing-preview">
-                    <div class="card-body">
-                        <div class="listing-heading text-center">
-                            <h4 class="text-primary">Wigs</h4>
-                        </div>
-                        <hr />
-                        <a href="braids.html" class="btn btn-primary btn-block">More
-                            Info</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Listing 6 -->
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card listing-preview">
-                    <div class="card-body">
-                        <div class="listing-heading text-center">
-                            <h4 class="text-primary">Perms</h4>
-                        </div>
-                        <hr />
-                        <a href="braids.html" class="btn btn-primary btn-block">More
-                            Info</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Listing 7 -->
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card listing-preview">
-                    <div class="card-body">
-                        <div class="listing-heading text-center">
-                            <h4 class="text-primary">Other</h4>
-                        </div>
-                        <hr />
-                        <a href="braids.html" class="btn btn-primary btn-block">More
-                            Info</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Listing 8 -->
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card listing-preview">
-                    <div class="card-body">
-                        <div class="listing-heading text-center">
-                            <h4 class="text-primary">Other</h4>
-                        </div>
-                        <hr />
-                        <a href="braids.html" class="btn btn-primary btn-block">More
-                            Info</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Listing 9 -->
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card listing-preview">
-                    <div class="card-body">
-                        <div class="listing-heading text-center">
-                            <h4 class="text-primary">Other</h4>
-                        </div>
-                        <hr />
-                        <a href="braids.html" class="btn btn-primary btn-block">More
-                            Info</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Listing 10 -->
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card listing-preview">
-                    <div class="card-body">
-                        <div class="listing-heading text-center">
-                            <h4 class="text-primary">Other</h4>
-                        </div>
-                        <hr />
-                        <a href="braids.html" class="btn btn-primary btn-block">More
-                            Info</a>
-                    </div>
-                </div>
-            </div>
+            <hr />
+            <a href="/service-subcategories" class="btn btn-primary btn-block">
+              More Info
+            </a>
+          </div>
         </div>
+      </div>
+      {% endfor %} {% else %}
+      <div class="col-md-12">
+        <p>No Salon Service Availabe</p>
+      </div>
+      {% endif %}
     </div>
+  </div>
 </section>
 
 {% endblock %}
