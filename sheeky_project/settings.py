@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'cms',
     'backoffice',
     'humanize',
+    'accounts',
 ]
 
 MIDDLEWARE = [
