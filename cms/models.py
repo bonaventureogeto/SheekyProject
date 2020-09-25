@@ -114,7 +114,7 @@ class IndexPage(models.Model):
     email = models.CharField(max_length=255)
     phone_no = models.CharField(max_length=20)
     location = models.CharField(max_length=255)
-    about_us = models.TextField(max_length=255)
+    about_us = models.TextField()
     facebook_link = models.CharField(max_length=255)
     twitter_link = models.CharField(max_length=255)
     youtube_link = models.CharField(max_length=255)
@@ -144,4 +144,3 @@ class Help(models.Model):
     def __str__(self):
         """repr for help"""
         return self.problem
-        

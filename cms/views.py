@@ -78,5 +78,10 @@ def help(request):
 
 #booking-page
 def bookingPage(request):
-    return render(request, 'frontend/booking_page.html')
+    time = Booking.objects.all()
 
+    context = {
+        'time': time
+    }
+
+    return render(request, 'frontend/booking_page.html', context)
