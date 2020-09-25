@@ -22,8 +22,6 @@ def autheticate(request):
         # Redirect to a success page?
         return HttpResponseRedirect('/app/dashboard')
     else:
-        #context = {'error': 'Wrong credintials'}  # to display error?
-        #return render(request, 'backend/auth/login.html', {'context': context})
         return render(request, 'backend/auth/login.html', {
             'error_message': "Invalid username or password!",
         })
