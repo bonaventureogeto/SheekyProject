@@ -132,3 +132,16 @@ class IndexPage(models.Model):
     def __str__(self):
         """repr for contact us"""
         return self.email
+
+
+class Help(models.Model):
+    """
+    models for FAQs
+    """
+    problem = models.TextField(blank=True)
+    solution = models.TextField(blank=True)
+
+    def __str__(self):
+        """repr for help"""
+        return self.problem
+        
