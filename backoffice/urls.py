@@ -1,10 +1,13 @@
 from django.urls import path
-from . import views
+from .views import authentication
+from .views import subcategories
 
 app_name = 'app'
 urlpatterns = [
-    path('login', views.login, name="adminlogin"),
-    path('autheticate', views.autheticate, name='autheticate'),
-    path('signout', views.logout, name="signout"),
-    path('dashboard', views.index, name='dashboard'),
+    path('login', authentication.login, name="adminlogin"),
+    path('autheticate', authentication.autheticate, name='autheticate'),
+    path('signout', authentication.logout, name="signout"),
+    path('dashboard', authentication.index, name='dashboard'),
+    path('subcategories/index', subcategories.index, name='subcategories.index'),
+    path('subcategories/create', subcategories.create, name='subcategories.create'),
 ]
