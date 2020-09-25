@@ -1,0 +1,39 @@
+#header {
+  background: purple;
+  color: rgb(218, 174, 174);
+}
+
+#branding h1 {
+  color: rgb(216, 169, 169);
+}
+
+a:link,
+a:visited {
+  color: purple;
+}
+
+div.breadcrumbs {
+  background: rgb(221, 23, 221);
+}
+
+div.breadcrumbs a {
+  color: black;
+}
+
+.module h2,
+.module caption,
+.inline-group h2 {
+  background: purple;
+}
+
+.submit-row input,
+.submit-row input.default,
+.submit-row a,
+.submit-row a.closelink {
+  background: purple;
+}
+
+.selector-available h2,
+.selector-chosen h2 {
+  background: purple;
+}

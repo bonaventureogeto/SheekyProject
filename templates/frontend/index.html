@@ -1,7 +1,9 @@
 {% extends "frontend/base.html" %} {% load static %} {% block content %}
 <!-- home
     ================================================== -->
-<section id="home" class="s-home target-section" data-parallax="scroll" data-image-src="{% static 'frontend/assets/img/sheeky/sheeky-13.jpg' %}" data-natural-width=3000 data-natural-height=2000 data-position-y=top style="padding-bottom: 15%;">
+{% if index %}
+{% for value in index %}
+<section id="home" class="s-home target-section" data-parallax="scroll" data-image-src="{{ value.background_photo.url }}" data-natural-width=3000 data-natural-height=2000 data-position-y=top style="padding-bottom: 15%;">
 
     <div class="shadow-overlay"></div>
 
@@ -13,8 +15,8 @@
 
             <div class="home-button" style="padding-left: 15%;">
                 <br>
-                <button><a href="/salon">Salon</a></button>
-                <button><a href="/barber">Barber</a></button>
+                <button><a href="{% url 'salon' %}">Salon</a></button>
+                <button><a href="{% url 'barber' %}">Barber</a></button>
                 <button><a href="#">Products</a></button>
                 <button><a href="#">Doorstep Deluxe</a></button>
             </div>
@@ -27,39 +29,51 @@
 
     <ul class="home-social">
         <li class="home-social-title">Follow Us</li>
+        {% if value.facebook_link %}
         <li>
-            <a href="#0">
+            <a href="{{ value.facebook_link }}">
                 <i class="fab fa-facebook"></i>
                 <span class="home-social-text">Facebook</span>
             </a>
         </li>
+        {% endif %}
+        {% if value.twittter_link %}
         <li>
-            <a href="#0">
+            <a href="{{ value.twitter_link }}">
                 <i class="fab fa-twitter"></i>
                 <span class="home-social-text">Twitter</span>
             </a>
         </li>
+        {% endif %}
+        {% if value.linkedin_link %}
         <li>
-            <a href="#0">
+            <a href="{{ value.linkedin_link }}">
                 <i class="fab fa-linkedin"></i>
                 <span class="home-social-text">LinkedIn</span>
             </a>
         </li>
+        {% endif %}
+        {% if value.instagram_link %}
         <li>
-            <a href="#0"><i class="fab fa-instagram"></i>
+            <a href="{{ value.instagram_link }}"><i class="fab fa-instagram"></i>
                 <span class="home-social-text">Instagram</span>
             </a>
         </li>
+        {% endif %}
+        {% if value.youtube_link %}
         <li>
-            <a href="#0"><i class="fab fa-youtube"></i>
+            <a href="{{ value.youtube_link }}"><i class="fab fa-youtube"></i>
                 <span class="home-social-text">YouTube</span>
             </a>
         </li>
+        {% endif %}
+        {% if value.snapchat_link %}
         <li>
-            <a href="#0"><i class="fab fa-snapchat"></i>
+            <a href="{{ value.snapchat_link }}"><i class="fab fa-snapchat"></i>
                 <span class="home-social-text">Snapchat</span>
             </a>
         </li>
+        {% endif %}
     </ul>
     <!-- end home-social -->
 
@@ -91,7 +105,7 @@
             <h5>Latest YouTube Videos</h5>
 
             <div class="video-container">
-                <iframe src="https://youtube.com/video/14592941?title=0&amp;byline=0&amp;portrait=0&amp;color=F64B39" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                <iframe src="{{ value.latest_youtube_video_link }}" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
             </div>
 
         </div>
@@ -129,41 +143,42 @@
         <div class="row testimonials">
 
             <div class="col-full testimonials__slider">
-
+                {% if value.testimonials %}
                 <div class="testimonials__slide">
-                    <img src="{% static 'frontend/images/avatars/user-01.jpg' %}" alt="Author
+                    <img src="{{ value.testimonial_author_photo.url }}" alt="Author
                         image" class="testimonials__avatar">
-                    <p>Qui ipsam temporibus quisquam velMaiores eos cumque distinctio nam accusantium ipsum. Laudantium quia consequatur molestias delectus culpa facere hic dolores aperiam. Accusantium quos qui praesentium corpori.</p>
+                    <p>{{ value.testimonials }}</p>
                     <div class="testimonials__author">
-                        Tim Cook
-                        <span>CEO, Apple</span>
+                        {{ value.testimonial_author }}
+                        <span>{{ value.testimonial_author_position }}</span>
                     </div>
                 </div>
                 <!-- end testimonials__slide -->
-
+                {% endif %}
+                {% if value.testimonials %}
                 <div class="testimonials__slide">
-                    <img src="{% static 'frontend/images/avatars/user-05.jpg' %}" alt="Author
+                    <img src="{{ value.testimonial_author_photo.url }}" alt="Author
                         image" class="testimonials__avatar">
-                    <p>Excepturi nam cupiditate culpa doloremque deleniti repellat. Veniam quos repellat voluptas animi adipisci. Nisi eaque consequatur. Quasi voluptas eius distinctio. Atque eos maxime. Qui ipsam temporibus quisquam vel.</p>
+                    <p>{{ value.testimonials }}</p>
                     <div class="testimonials__author">
-                        Sundar Pichai
-                        <span>CEO, Google</span>
+                        {{ value.testimonial_author }}
+                        <span>{{ value.testimonial_author_position }}</span>
                     </div>
                 </div>
                 <!-- end testimonials__slide -->
-
+                {% endif %}
+                {% if value.testimonials %}
                 <div class="testimonials__slide">
-                    <img src="{% static 'frontend/images/avatars/user-02.jpg' %}" alt="Author
+                    <img src="{{ value.testimonial_author_photo.url }}" alt="Author
                         image" class="testimonials__avatar">
-                    <p>Repellat dignissimos libero. Qui sed at corrupti expedita voluptas odit. Nihil ea quia nesciunt. Ducimus aut sed ipsam. Autem eaque officia cum exercitationem sunt voluptatum accusamus. Quasi voluptas eius distinctio.
-                    </p>
+                    <p>{{ value.testimonials }}</p>
                     <div class="testimonials__author">
-                        Satya Nadella
-                        <span>CEO, Microsoft</span>
+                        {{ value.testimonial_author }}
+                        <span>{{ value.testimonial_author_position }}</span>
                     </div>
                 </div>
                 <!-- end testimonials__slide -->
-
+                {% endif %}
             </div>
             <!-- end testimonials__slider -->
 
@@ -197,7 +212,7 @@
                     <i class="fa fa-address-card" style="color: brown;"></i>
                 </div>
                 <div class="service-text">
-                    <a href="index.html">
+                    <a href="{% url 'index' %}">
                         <h3 class="h4">Visit Our Website</h3>
                     </a>
                     <!-- <p>Nemo cupiditate ab quibusdam quaerat impedit magni.
@@ -211,7 +226,7 @@
                     <i class="fa fa-file-archive" style="color: brown;"></i>
                 </div>
                 <div class="service-text">
-                    <a href="index.html">
+                    <a href="{% url 'index' %}">
                         <h3 class="h4">Check Out All The Services We Have Prepared For You</h3>
                     </a>
                     <!-- <p>Nemo cupiditate ab quibusdam quaerat impedit magni.
@@ -225,7 +240,7 @@
                     <i class="fa fa-check-circle" style="color: brown;"></i>
                 </div>
                 <div class="service-text">
-                    <a href="index.html">
+                    <a href="{% url 'index' %}">
                         <h3 class="h4">Select The Services You Need</h3>
                     </a>
                     <!-- <p>Nemo cupiditate ab quibusdam quaerat impedit magni.
@@ -239,7 +254,7 @@
                     <i class="fa fa-envelope" style="color: brown;"></i>
                 </div>
                 <div class="service-text">
-                    <a href="booking.html">
+                    <a href="{% url 'index' %}">
                         <h3 class="h4">Book An Appointment With Us</h3>
                     </a>
                     <!-- <p>Nemo cupiditate ab quibusdam quaerat impedit magni.
@@ -253,7 +268,7 @@
                     <i class="icon-car" style="color: brown;"></i>
                 </div>
                 <div class="service-text">
-                    <a href="location.html">
+                    <a href="{% url 'index' %}">
                         <h3 class="h4">Come For Your Treatment</h3>
                     </a>
                     <!-- <p>Nemo cupiditate ab quibusdam quaerat impedit magni.
@@ -267,7 +282,7 @@
                     <i class="icon-comment" style="color: brown;"></i>
                 </div>
                 <div class="service-text">
-                    <a href="sheekyhub.html">
+                    <a href="{% url 'index' %}">
                         <h3 class="h4">Review Us on SheekyHub and Follow Us On Social Media</h3>
                     </a>
                     <!-- <p>Nemo cupiditate ab quibusdam quaerat impedit magni.
@@ -287,7 +302,7 @@
 
 <!-- About us
 ================================================== -->
-<section id='services' class="s-services light-gray">
+<section class="s-services light-gray" style="background-color: white;">
 
     <div class="row section-header" data-aos="fade-up">
         <div class="col-full">
@@ -300,86 +315,11 @@
     <div class="row" data-aos="fade-up">
         <div class="col-full">
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse.
+                {{ value.about_us }}
             </p>
         </div>
     </div>
     <!-- end about-desc -->
-    <div class="row">
-        <div class="col-full">
-            <h3 style="text-align: center;">Meet The Team</h3>
-        </div>
-    </div>
-
-    <div class="row services-list block-1-3 block-m-1-2 block-tab-full">
-        <div class="col-block service-item" data-aos="fade-up">
-            <div class="service-icon service-icon--brand-identity">
-                <i class="icon-user"></i>
-            </div>
-            <div class="service-text">
-                <h3 class="h4">Gregory Xander</h3>
-                <p>Nemo cupiditate ab quibusdam quaerat impedit magni. Earum suscipit ipsum laudantium.
-                </p>
-            </div>
-        </div>
-
-        <div class="col-block service-item" data-aos="fade-up">
-            <div class="service-icon service-icon--illustration">
-                <i class="icon-user"></i>
-            </div>
-            <div class="service-text">
-                <h3 class="h4">Mary Ann</h3>
-                <p>Nemo cupiditate ab quibusdam quaerat impedit magni. Earum suscipit ipsum laudantium.
-                </p>
-            </div>
-        </div>
-
-        <div class="col-block service-item" data-aos="fade-up">
-            <div class="service-icon service-icon--web-design">
-                <i class="icon-user"></i>
-            </div>
-            <div class="service-text">
-                <h3 class="h4">Paul Ryan</h3>
-                <p>Nemo cupiditate ab quibusdam quaerat impedit magni. Earum suscipit ipsum laudantium.
-                </p>
-            </div>
-        </div>
-
-        <div class="col-block service-item" data-aos="fade-up">
-            <div class="service-icon service-icon--product-strategy">
-                <i class="icon-user"></i>
-            </div>
-            <div class="service-text">
-                <h3 class="h4">John Doe</h3>
-                <p>Nemo cupiditate ab quibusdam quaerat impedit magni. Earum suscipit ipsum laudantium.
-                </p>
-            </div>
-        </div>
-
-        <div class="col-block service-item" data-aos="fade-up">
-            <div class="service-icon service-icon--ui-design">
-                <i class="icon-user"></i>
-            </div>
-            <div class="service-text">
-                <h3 class="h4">Meeky Mill</h3>
-                <p>Nemo cupiditate ab quibusdam quaerat impedit magni. Earum suscipit ipsum laudantium.
-                </p>
-            </div>
-        </div>
-
-        <div class="col-block service-item" data-aos="fade-up">
-            <div class="service-icon service-icon--mobile-dev">
-                <i class="icon-user"></i>
-            </div>
-            <div class="service-text">
-                <h3 class="h4">Jane Doe</h3>
-                <p>Nemo cupiditate ab quibusdam quaerat impedit magni. Earum suscipit ipsum laudantium.
-                </p>
-            </div>
-        </div>
-
-    </div>
     <!-- end services-list -->
 
 </section>
@@ -404,12 +344,11 @@
             <p>
                 <span class="fa fa-envelope"> Shoot Us An Email:</span>
                 <br>
-                <a href="mailto:#0" class="contact-email">hello@sheeky.com</a>
+                <a href="mailto:#0" class="contact-email">{{ value.email }}</a>
                 <br>
                 <br>
                 <span><i class="icon-phone"></i> Give Us A Call</span>
-                <span class="contact-number">+1 (917) 123 456 / +1 (917)
-                    333 987</span>
+                <span class="contact-number">{{ value.phone_no }}</span>
             </p>
         </div>
         <!-- end contact-main -->
@@ -423,7 +362,7 @@
             <h3 class="subhead subhead--light">Where To Find Us</h3>
 
             <p class="contact-address">
-                1600 Amphitheatre Parkway<br> Mountain View, CA<br> 94043 US
+                {{ value.location }}
             </p>
         </div>
         <!-- end contact-secondary -->
@@ -432,30 +371,36 @@
             <h3 class="subhead subhead--light">Follow Us</h3>
 
             <ul class="contact-social">
+                {% if value.facebook_link %}
                 <li>
-                    <a href="#0"><i class="fab fa-facebook"></i></a>
+                    <a href="{{ value.facebook_link }}"><i class="fab fa-facebook"></i></a>
                 </li>
+                {% endif %}
+                {% if value.twitter_link %}
                 <li>
-                    <a href="#0"><i class="fab fa-twitter"></i></a>
+                    <a href="{{ value.twitter_link }}"><i class="fab fa-twitter"></i></a>
                 </li>
+                {% endif %}
+                {% if value.instagram_link %}
                 <li>
-                    <a href="#0"><i class="fab fa-instagram"></i></a>
+                    <a href="{{ value.instagram_link }}"><i class="fab fa-instagram"></i></a>
                 </li>
+                {% endif %}
+                {% if value.youtube_link %}
                 <li>
-                    <a href="#0"><i class="fab fa-behance"></i></a>
+                    <a href="{{ value.youtube_link }}"><i class="fab fa-youtube"></i></a>
                 </li>
+                {% endif %}
+                {% if value.linkedin_link %}
                 <li>
-                    <a href="#0"><i class="fab fa-dribbble"></i></a>
+                    <a href="{{ value.linkedin_link }}"><i class="fab fa-linkedin"></i></a>
                 </li>
+                {% endif %}
+                {% if value.snapchat_link %}
                 <li>
-                    <a href="#0"><i class="fab fa-youtube"></i></a>
+                    <a href="{{ value.snapchat_link }}"><i class="fab fa-snapchat"></i></a>
                 </li>
-                <li>
-                    <a href="#0"><i class="fab fa-linkedin"></i></a>
-                </li>
-                <li>
-                    <a href="#0"><i class="fab fa-snapchat"></i></a>
-                </li>
+                {% endif %}
             </ul>
             <!-- end contact-social -->
 
@@ -522,4 +467,11 @@
 
 </div>
 <!-- end photoSwipe background -->
+{% endfor %}
+{% else %}
+    <div class="col-md-12">
+        <img src="{% static 'frontend/images/logo.png' %}" alt="Homepage">
+    </div>
+{% endif %}
+
 {% endblock %}

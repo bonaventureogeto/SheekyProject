@@ -1,5 +1,7 @@
 {% extends "frontend/base.html" %} {% load static %} {% block content %}
 <section class="card">
+    {% if customer %}
+    {% for customer_detail in customer %}
     <div class="container">
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -9,12 +11,12 @@
                     <div class="col-md-3">
                         <!-- Profile Image -->
                         <div class="box box-primary">
-                            <h3 class="profile-username text-center">Nina Mcintire
+                            <h3 class="profile-username text-center">{{ customer_detail.name }}
                             </h3>
 
                             <div class="box-body box-profile">
                                 <img class="profile-user-img img-responsive
-                                    rounded-circle img-circle" src="{% static 'frontend/assets/img/users/jenny.jpg'%}" alt="User profile picture" />
+                                    rounded-circle img-circle" src="{{ customer_detail.profile_pic.url }}" alt="User profile picture" />
 
                                 <ul class="list-group list-group-unbordered">
                                     <li class="list-group-item">
@@ -59,19 +61,26 @@
                                                 <div class="card">
                                                     <h4 style="padding-left:
                                                         5%;">Previous Treatments</h4>
+                                                    {% if customer_detail.previous_treatment_1 %}
                                                     <div class="col-sm-12 card">
-                                                        <img class="img-responsive" src="{% static 'frontend/assets/img/sheeky/sheeky-10.jpg'%}" alt="Photo" />
+                                                        <img class="img-responsive" src="{{ customer_detail.previous_treatment_1.url }}" alt="Photo" />
                                                     </div>
+                                                    {% endif %}
+                                                    {% if customer_detail.previous_treatment_2 %}
                                                     <div class="col-sm-12 card">
-                                                        <img class="img-responsive" src="{% static 'frontend/assets/img/sheeky/sheeky-12.jpg' %}" alt="Photo" />
+                                                        <img class="img-responsive" src="{{ customer_detail.previous_treatment_2.url }}" alt="Photo" />
                                                     </div>
+                                                    {% endif %}
+                                                    {% if customer_detail.previous_treatment_3 %}
                                                     <div class="col-sm-12 card">
-                                                        <img class="img-responsive" src="{% static 'frontend/assets/img/sheeky/sheeky-5.jpg' %}" alt="Photo" />
+                                                        <img class="img-responsive" src="{{ customer_detail.previous_treatment_3.url }}" alt="Photo" />
                                                     </div>
+                                                    {% endif %}
+                                                    {% if customer_detail.previous_treatment_4 %}
                                                     <div class="col-sm-12 card">
-                                                        <img class="img-responsive" src="{% static 'frontend/assets/img/sheeky/sheeky-17.jpg' %}" alt="Photo" />
+                                                        <img class="img-responsive" src="{{ customer_detail.previous_treatment_4.url }}" alt="Photo" />
                                                     </div>
-
+                                                    {% endif %}
                                                     <!-- /.col -->
                                                 </div>
                                                 <!-- /.row -->
@@ -94,14 +103,14 @@
                                                     margin-r-5"></i>Favorite
                                                 Hairstyle</strong>
 
-                                            <p class="text-muted">Dreadlocks</p>
+                                            <p class="text-muted">{{ customer_detail.favorite_hairstyle }}</p>
                                             <hr />
 
                                             <strong><i class="fa fa-laugh
                                                     margin-r-5"></i>
                                                 Nickname</strong>
 
-                                            <p class="text-muted">California</p>
+                                            <p class="text-muted">{{ customer_detail.nickname }}</p>
                                             <hr />
 
                                             <strong><i class="fa fa-angry
@@ -109,7 +118,7 @@
                                                 Problem I've Struggled With For
                                                 A Long Time</strong>
 
-                                            <p class="text-muted">None</p>
+                                            <p class="text-muted">{{ customer_detail.skin_problem }}</p>
 
                                             <hr />
 
@@ -121,25 +130,14 @@
                                             <ol>
                                                 <p>
                                                     <li><span class="label
-                                                            label-danger">Product
-                                                            A</span></li>
-                                                    <li>
-                                                        <span class="label
-                                                            label-success">Product
-                                                            B</span>
+                                                            label-danger">
+                                                            {{ customer_detail.products_used }}
+                                                        </span>
                                                     </li>
                                                     <li><span class="label
-                                                            label-info">Product
-                                                            C</span></li>
-                                                    <li>
-                                                        <span class="label
-                                                            label-warning">Product
-                                                            D</span>
-                                                    </li>
-                                                    <li>
-                                                        <span class="label
-                                                            label-primary">Product
-                                                            E</span>
+                                                        label-danger">
+                                                        {{ customer_detail.products_used }}
+                                                    </span>
                                                     </li>
                                                 </p>
                                             </ol>
@@ -152,7 +150,7 @@
                                                 Ritual</strong>
 
                                             <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.
+                                                {{ customer_detail.daily_hair_ritual }}
                                             </p>
                                         </div>
                                     </div>
@@ -167,11 +165,8 @@
                                                 </h3>
 
                                                 <div class="timeline-body">
-                                                    Take me to your leader! Switzerland is small and neutral! We are more like Germany, ambitious and misunderstood!
+                                                    {{ customer_detail.sheekyhub_post }}
                                                 </div>
-                                                <span class="time"><i class="fa
-                                                        fa-clock"></i> 27 mins
-                                                    ago</span>
                                                 <div class="timeline-footer">
                                                     <a class="btn btn-warning
                                                         btn-flat btn-xs">View
@@ -188,11 +183,8 @@
                                                 </h3>
 
                                                 <div class="timeline-body">
-                                                    Take me to your leader! Switzerland is small and neutral! We are more like Germany, ambitious and misunderstood!
+                                                    {{ customer_detail.my_reviews }}
                                                 </div>
-                                                <span class="time"><i class="fa
-                                                        fa-clock"></i> 27 mins
-                                                    ago</span>
                                                 <div class="timeline-footer">
                                                     <a class="btn btn-warning
                                                         btn-flat btn-xs">View
@@ -214,6 +206,8 @@
             </div>
             <!-- /.content-wrapper -->
         </div>
+        {% endfor %}
         <!-- ./wrapper -->
+        {% endif %}
 </section>
 {% endblock %}

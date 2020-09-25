@@ -1,0 +1,14 @@
+{% extends 'admin/base.html' %} {% load static %} {% block branding %}
+<h1 id="head">
+  <img
+    src="{% static 'frontend/images/logo.png' %}"
+    alt="Sheeky Salon and Barber"
+    height="50"
+    width="250"
+    class="brand_img"
+  />
+  Admin Area
+</h1>
+{% endblock %} {% block extrastyle %}
+<link rel="stylesheet" href="{% static 'frontend/css/admin.css' %}" />
+{% endblock %}

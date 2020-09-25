@@ -1,195 +1,233 @@
-{% extends "frontend/base.html" %}
+{% extends "frontend/base.html" %} {% load static %} {% load humanize %}
+<!-- content -->
+{%block content %}
+<!--Section: Block Content-->
+<section class="mb-5">
+  {% if service %} {% for service_detail in service %}
+  <div class="row">
+    <div class="col-md-6 mb-4 mb-md-0">
+      <div id="mdb-lightbox-ui"></div>
 
-{% load static %}
-
-{% block content %}
-<!-- Listing -->
-<section id="listing" class="py-4">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-9">
-                <!-- Home Main Image -->
-                <img
-                    src="{% static 'frontend/assets/img/sheeky/sheeky-7.jpg' %}"
+      <div class="mdb-lightbox">
+        <div class="row product-gallery mx-1">
+          <div class="col-12 mb-0">
+            <figure class="view overlay rounded z-depth-1 main-img">
+              <img
+                src="{{ service_detail.main_photo.url }}"
+                alt=""
+                class="img-main img-fluid mb-3"
+              />
+            </figure>
+          </div>
+          <div class="col-12">
+            <div class="row">
+              {% if service_detail.photo_1 %}
+              <div class="col-3">
+                <div class="view overlay rounded z-depth-1 gallery-item">
+                  <img
+                    src="{{ service_detail.photo_1.url }}"
                     alt=""
                     class="img-main img-fluid mb-3"
-                    />
-                <!-- Thumbnails -->
-                <div class="row mb-5 thumbs">
-                    <div class="col-md-2">
-                        <a
-                            href="{% static
-                            'frontend/assets/img/sheeky/sheeky-7.jpg' %}"
-                            data-lightbox="home-images">
-                            <img
-                                src="{% static
-                                'frontend/assets/img/sheeky/sheeky-7.jpg' %}"
-                                alt=""
-                                class="img-fluid"
-                                />
-                        </a>
-                    </div>
-                    <div class="col-md-2">
-                        <a
-                            href="{% static
-                            'frontend/assets/img/sheeky/sheeky-8.jpg' %}"
-                            data-lightbox="home-images">
-                            <img
-                                src="{% static
-                                'frontend/assets/img/sheeky/sheeky-8.jpg' %}"
-                                alt=""
-                                class="img-fluid"
-                                />
-                        </a>
-                    </div>
-                    <div class="col-md-2">
-                        <a
-                            href="{% static
-                            'frontend/assets/img/sheeky/sheeky-3.jpg' %}"
-                            data-lightbox="home-images">
-                            <img
-                                src="{% static
-                                'frontend/assets/img/sheeky/sheeky-3.jpg' %}"
-                                alt=""
-                                class="img-fluid"
-                                />
-                        </a>
-                    </div>
-                    <div class="col-md-2">
-                        <a
-                            href="{% static
-                            'frontend/assets/img/sheeky/sheeky-4.jpg' %}"
-                            data-lightbox="home-images">
-                            <img
-                                src="{% static
-                                'frontend/assets/img/sheeky/sheeky-4.jpg' %}"
-                                alt=""
-                                class="img-fluid"
-                                />
-                        </a>
-                    </div>
-                    <div class="col-md-2">
-                        <a
-                            href="{% static
-                            'frontend/assets/img/sheeky/sheeky-5.jpg' %}"
-                            data-lightbox="home-images">
-                            <img
-                                src="{% static
-                                'frontend/assets/img/sheeky/sheeky-5.jpg' %}"
-                                alt=""
-                                class="img-fluid"
-                                />
-                        </a>
-                    </div>
-                    <div class="col-md-2">
-                        <a
-                            href="{% static
-                            'frontend/assets/img/sheeky/sheeky-6.jpg' %}"
-                            data-lightbox="home-images">
-                            <img
-                                src="{% static
-                                'frontend/assets/img/sheeky/sheeky-6.jpg' %}"
-                                alt=""
-                                class="img-fluid"
-                                />
-                        </a>
-                    </div>
+                  />
+                  <div class="mask rgba-white-slight"></div>
                 </div>
-                <!-- Fields -->
-                <div class="row mb-5 fields">
-                    <div class="col-md-6">
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item text-secondary">
-                                <i class="fas fa-money-bill-alt"></i> Price:
-                                <span class="float-right">$490,000</span>
-                            </li>
-                        </ul>
-                    </div>
+              </div>
+              {% endif %} {% if service_detail.photo_2 %}
+              <div class="col-3">
+                <div class="view overlay rounded z-depth-1 gallery-item">
+                  <img
+                    src="{{ service_detail.photo_2.url }}"
+                    alt=""
+                    class="img-main img-fluid mb-3"
+                  />
+                  <div class="mask rgba-white-slight"></div>
                 </div>
-
-                <!-- Description -->
-                <div class="row mb-5">
-                    <div class="col-md-12">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Mollitia recusandae esse reiciendis officia omnis non
-                        rerum
-                        dicta cupiditate nostrum molestias deserunt aut minus
-                        inventore
-                        animi atque, consequuntur ad fugit. Possimus culpa
-                        blanditiis
-                        repellendus ipsa similique ullam, natus error dolor
-                        harum.
-                    </div>
+              </div>
+              {% endif %} {% if service_detail.photo_3 %}
+              <div class="col-3">
+                <div class="view overlay rounded z-depth-1 gallery-item">
+                  <img
+                    src="{{ service_detail.photo_3.url }}"
+                    alt=""
+                    class="img-main img-fluid mb-3"
+                  />
+                  <div class="mask rgba-white-slight"></div>
                 </div>
+              </div>
+              {% endif %} {% if service_detail.photo_4 %}
+              <div class="col-3">
+                <div class="view overlay rounded z-depth-1 gallery-item">
+                  <img
+                    src="{{ service_detail.photo_4.url }}"
+                    alt=""
+                    class="img-main img-fluid mb-3"
+                  />
+                  <div class="mask rgba-white-slight"></div>
+                </div>
+              </div>
+              {% endif %}
             </div>
-            <div class="col-md-3">
-                <button
-                    class="btn-primary btn-block btn-lg"
-                    data-toggle="modal"
-                    data-target="#inquiryModal">
-                    BOOK APPOINTMENT
-                </button>
-            </div>
+          </div>
         </div>
+      </div>
     </div>
+    <div class="col-md-6">
+      <h5>{{ service_detail.service_subcategory }}</h5>
+      <p class="mb-2 text-muted text-uppercase small">
+        {{ service_detail.name }}
+      </p>
+      <ul class="rating row" style="padding-left: 5%">
+        <a>
+          <i class="fas fa-star fa-sm text-primary"></i>
+        </a>
+        <a>
+          <i class="fas fa-star fa-sm text-primary"></i>
+        </a>
+        <a>
+          <i class="fas fa-star fa-sm text-primary"></i>
+        </a>
+        <a>
+          <i class="fas fa-star fa-sm text-primary"></i>
+        </a>
+        <a>
+          <i class="far fa-star fa-sm text-primary"></i>
+        </a>
+      </ul>
+      <p>
+        <span class="mr-1">
+          Price: <strong>KSH. {{ service_detail.price | intcomma }}</strong>
+        </span>
+      </p>
+      <p class="pt-1">{{ service_detail.description }}</p>
+      <button type="button" class="btn btn-primary btn-md mr-1 mb-2">
+        <a href="{% url 'booking-page' %}">Book Appointment Now</a>
+      </button>
+    </div>
+  </div>
+  <!-- Recommendations -->
+  <!--Section: Block Content-->
+  <hr />
+  <section class="text-center">
+    <h2>Recommendations</h2>
+    <!-- Grid row -->
+    <div class="row">
+      <!-- Grid column -->
+      <div class="col-md-6 col-lg-3 mb-5">
+        <!-- Card -->
+        <div class="">
+          <div class="view zoom overlay z-depth-2 rounded">
+            <a href="#!">
+              <div class="mask">
+                <img
+                  src="{% static 'frontend/assets/img/sheeky/sheeky-5.jpg' %}"
+                  alt=""
+                  class="img-main img-fluid mb-3"
+                />
+                <div class="mask rgba-black-slight"></div>
+              </div>
+            </a>
+          </div>
+
+          <div class="pt-4">
+            <h5>Fantasy Manicure</h5>
+            <h6>12.99 $</h6>
+          </div>
+        </div>
+        <!-- Card -->
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-6 col-lg-3 mb-5">
+        <!-- Card -->
+        <div class="">
+          <div class="view zoom overlay z-depth-2 rounded">
+            <a href="#!">
+              <div class="mask">
+                <img
+                  src="{% static 'frontend/assets/img/sheeky/sheeky-5.jpg' %}"
+                  alt=""
+                  class="img-main img-fluid mb-3"
+                />
+                <div class="mask rgba-black-slight"></div>
+              </div>
+            </a>
+          </div>
+
+          <div class="pt-4">
+            <h5>Fantasy HairStyle</h5>
+            <h6>12.99 $</h6>
+          </div>
+        </div>
+        <!-- Card -->
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-6 col-lg-3 mb-5">
+        <!-- Card -->
+        <div class="">
+          <div class="view zoom overlay z-depth-2 rounded">
+            <a href="#!">
+              <div class="mask">
+                <img
+                  src="{% static 'frontend/assets/img/sheeky/sheeky-5.jpg' %}"
+                  alt=""
+                  class="img-main img-fluid mb-3"
+                />
+                <div class="mask rgba-black-slight"></div>
+              </div>
+            </a>
+          </div>
+
+          <div class="pt-4">
+            <h5>Fantasy HairStyle</h5>
+            <h6>
+              <span class="text-black mr-1">$12.99</span>
+            </h6>
+          </div>
+        </div>
+        <!-- Card -->
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-6 col-lg-3 mb-5">
+        <!-- Card -->
+        <div class="">
+          <div class="view zoom overlay z-depth-2 rounded">
+            <a href="#!">
+              <div class="mask">
+                <img
+                  src="{% static 'frontend/assets/img/sheeky/sheeky-5.jpg' %}"
+                  alt=""
+                  class="img-main img-fluid mb-3"
+                />
+                <div class="mask rgba-black-slight"></div>
+              </div>
+            </a>
+          </div>
+
+          <div class="pt-4">
+            <h5>Fantasy HairStyle</h5>
+            <h6>
+              <span class="text-black mr-1">$12.99</span>
+            </h6>
+          </div>
+        </div>
+        <!-- Card -->
+      </div>
+      <!-- Grid column -->
+    </div>
+    <!-- Grid row -->
+  </section>
+  {% endfor %}
+  <!--Section: Block Content-->
+  {% else %}
+  <div class="col-md-12">
+    <p>No Salon Service Detail</p>
+  </div>
+  {% endif %}
 </section>
-
-<!-- Inquiry Modal -->
-<div class="modal fade" id="inquiryModal" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="inquiryModalLabel">
-                    BOOK APPOINTMENT NOW
-                </h5>
-                <button type="button" class="close" data-dismiss="modal">
-                    <span>&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label for="property_name" class="col-form-label">Style:</label>
-                        <input
-                            type="text"
-                            name="listing"
-                            class="form-control"
-                            value="45
-                            Drivewood Cirlce"
-                            disabled
-                            />
-                    </div>
-                    <div class="form-group">
-                        <label for="name" class="col-form-label">Name:</label>
-                        <input type="text" name="name" class="form-control"
-                            required />
-                    </div>
-                    <div class="form-group">
-                        <label for="email" class="col-form-label">Email:</label>
-                        <input
-                            type="email"
-                            name="email"
-                            class="form-control"
-                            required
-                            />
-                    </div>
-                    <div class="form-group">
-                        <label for="phone" class="col-form-label">Phone:</label>
-                        <input type="text" name="phone" class="form-control" />
-                    </div>
-                    <div class="form-group">
-                        <label for="message" class="col-form-label">Message:</label>
-                        <textarea name="message" class="form-control"></textarea>
-                    </div>
-                    <hr />
-                    <input
-                        type="submit"
-                        value="Send"
-                        class="btn btn-block btn-secondary"
-                        />
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+<!--Section: Block Content-->
 {% endblock %}

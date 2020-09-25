@@ -1,0 +1,49 @@
+{% extends "frontend/base.html" %} {% load static %} {% block content %}
+
+<div id="booking" class="section" style="padding-left: 15%">
+  <div class="section-center">
+    <div class="container">
+      <div class="row">
+        <div class="booking-form">
+          <div class="form-header">
+            <h1>Let's Plan Your Next Visit</h1>
+          </div>
+          {% include 'frontend/partials/alerts.html' %}
+          <form action="{% url 'booking-page' %}" method="POST">
+            {% csrf_token %}
+            <span class="form-label">Date</span>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input class="form-control" type="date" required />
+                </div>
+              </div>
+            </div>
+            <span class="form-label">Here are our suggested times</span>
+
+            <div class="row card">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <select class="form-control" required>
+                    <option value="" selected hidden></option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                  </select>
+                  <span class="select-arrow"></span>
+                </div>
+              </div>
+            </div>
+            <br />
+
+            <div class="form-btn">
+              <button class="submit-btn">Book Now</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
