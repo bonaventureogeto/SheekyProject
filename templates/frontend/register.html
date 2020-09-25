@@ -19,7 +19,10 @@
       <p class="divider-text">
         <span class="bg-light">OR</span>
       </p>
-      <form>
+      <!-- alerts -->
+      {% include 'frontend/partials/alerts.html' %}
+      <form action="{% url 'register' %}" method="POST">
+        {% csrf_token %}
         <div class="form-group input-group">
           <div class="input-group-prepend">
             <span class="input-group-text">
@@ -27,9 +30,36 @@
             </span>
           </div>
           <input
-            name=""
+            name="first_name"
             class="form-control"
-            placeholder="Full name"
+            placeholder="First name"
+            type="text"
+          />
+        </div>
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i class="fa fa-user"></i>
+            </span>
+          </div>
+          <input
+            name="last_name"
+            class="form-control"
+            placeholder="Last name"
+            type="text"
+          />
+        </div>
+        <!-- form-group// -->
+        <div class="form-group input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i class="fa fa-user"></i>
+            </span>
+          </div>
+          <input
+            name="username"
+            class="form-control"
+            placeholder="username"
             type="text"
           />
         </div>
@@ -41,7 +71,7 @@
             </span>
           </div>
           <input
-            name=""
+            name="email"
             class="form-control"
             placeholder="Email address"
             type="email"
@@ -54,14 +84,8 @@
               <i class="fa fa-phone"></i>
             </span>
           </div>
-          <select class="custom-select" style="max-width: 120px">
-            <option selected="">+254</option>
-            <option value="1">+972</option>
-            <option value="2">+198</option>
-            <option value="3">+701</option>
-          </select>
           <input
-            name=""
+            name="phone_no"
             class="form-control"
             placeholder="Phone number"
             type="text"
@@ -75,6 +99,7 @@
             </span>
           </div>
           <input
+            name="password"
             class="form-control"
             placeholder="Create password"
             type="password"
@@ -88,6 +113,7 @@
             </span>
           </div>
           <input
+            name="password2"
             class="form-control"
             placeholder="Repeat password"
             type="password"

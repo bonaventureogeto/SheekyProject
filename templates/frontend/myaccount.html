@@ -61,19 +61,26 @@
                                                 <div class="card">
                                                     <h4 style="padding-left:
                                                         5%;">Previous Treatments</h4>
+                                                    {% if customer_detail.previous_treatment_1 %}
                                                     <div class="col-sm-12 card">
                                                         <img class="img-responsive" src="{{ customer_detail.previous_treatment_1.url }}" alt="Photo" />
                                                     </div>
+                                                    {% endif %}
+                                                    {% if customer_detail.previous_treatment_2 %}
                                                     <div class="col-sm-12 card">
                                                         <img class="img-responsive" src="{{ customer_detail.previous_treatment_2.url }}" alt="Photo" />
                                                     </div>
+                                                    {% endif %}
+                                                    {% if customer_detail.previous_treatment_3 %}
                                                     <div class="col-sm-12 card">
                                                         <img class="img-responsive" src="{{ customer_detail.previous_treatment_3.url }}" alt="Photo" />
                                                     </div>
+                                                    {% endif %}
+                                                    {% if customer_detail.previous_treatment_4 %}
                                                     <div class="col-sm-12 card">
                                                         <img class="img-responsive" src="{{ customer_detail.previous_treatment_4.url }}" alt="Photo" />
                                                     </div>
-
+                                                    {% endif %}
                                                     <!-- /.col -->
                                                 </div>
                                                 <!-- /.row -->

@@ -21,6 +21,7 @@
           </div>
           <div class="col-12">
             <div class="row">
+              {% if service_detail.photo_1 %}
               <div class="col-3">
                 <div class="view overlay rounded z-depth-1 gallery-item">
                   <img
@@ -31,6 +32,7 @@
                   <div class="mask rgba-white-slight"></div>
                 </div>
               </div>
+              {% endif %} {% if service_detail.photo_2 %}
               <div class="col-3">
                 <div class="view overlay rounded z-depth-1 gallery-item">
                   <img
@@ -41,6 +43,7 @@
                   <div class="mask rgba-white-slight"></div>
                 </div>
               </div>
+              {% endif %} {% if service_detail.photo_3 %}
               <div class="col-3">
                 <div class="view overlay rounded z-depth-1 gallery-item">
                   <img
@@ -51,6 +54,7 @@
                   <div class="mask rgba-white-slight"></div>
                 </div>
               </div>
+              {% endif %} {% if service_detail.photo_4 %}
               <div class="col-3">
                 <div class="view overlay rounded z-depth-1 gallery-item">
                   <img
@@ -61,6 +65,7 @@
                   <div class="mask rgba-white-slight"></div>
                 </div>
               </div>
+              {% endif %}
             </div>
           </div>
         </div>
