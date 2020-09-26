@@ -3,7 +3,9 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.utils import timezone
 from django.contrib import messages
 
+from ..forms.SubcategoryForm import SubcategoryForm
 from ..models.subcategories import Subcategory
+from ..models.categories import Category
 
 #List subcaegories
 def index(request):
@@ -21,7 +23,17 @@ def index(request):
 #Show create subcategory form
 def create(request):
     if request.user.is_authenticated:
-        return render(request,'backend/subcategories/create.html')
+
+        form=SubcategoryForm
+
+        categories=Category.objects.all
+
+        context = {
+            'categories': categories,
+            'form': form,
+        }
+
+        return render(request,'backend/subcategories/create.html',context)
     else:
         return render(request,'backend/auth/login.html')
 
@@ -30,21 +42,35 @@ def store(request):
     if request.user.is_authenticated:
         if request.method == "POST":
 
-            subcategory_name = request.POST.get('subcategory_name', '')
-            date_created = timezone.now()
-            date_updated = timezone.now()
+            form = SubcategoryForm(request.POST)
 
-            s=Subcategory()
-            s.sub_category_name=subcategory_name
-            s.created_at=date_created
-            s.updated_at=date_updated
-            s.save()
+            if form.is_valid():
+                s = form.save(commit=False)
+                s.created_at=timezone.now()
+                s.updated_at=timezone.now()
+                s.save()
 
-            messages.success(request, 'Record saved successfully!')
-            return HttpResponseRedirect('/app/subcategories/index')
+                messages.success(request, 'Record saved successfully!')
+                return HttpResponseRedirect('/app/subcategories/index')
+            else:
+                categories=Category.objects.all
 
+                context = {
+                    'categories': categories,
+                    'form': form,
+                }
+
+                return render(request,'backend/subcategories/create.html',context)
         else:
-            messages.error(request, 'Please subcategory name to proceed!')
-            return render(request,'backend/subcategories/create.html')
+            form=SubcategoryForm
+
+            categories=Category.objects.all
+
+            context = {
+                'categories': categories,
+                'form': form,
+            }
+
+            return render(request,'backend/subcategories/create.html',context)
     else:
         return HttpResponseRedirect('/app/login')

@@ -1,8 +1,8 @@
 {% extends "backend/base.html" %} {% load static %} {% block content %}
 <div class="box box-primary">
     <ol class="breadcrumb">
-        <li><a href="{% url 'app:subcategories.index' %}"><i class="fa fa-list-ul"></i> List Of Subcategories</a></li>
-        <li class="active">New Service Subcategory</li>
+        <li><a href="{% url 'app:categories.index' %}"><i class="fa fa-list-ul"></i> List Of Categories</a></li>
+        <li class="active">New Service Category</li>
     </ol>
     {% if form.errors %}
     <div class="alert alert-danger alert-dismissible col-12 mx-1" role="alert">
@@ -19,9 +19,9 @@
     </div>
     {% endif %}
     <div class="box-header with-border">
-        <h3 class="box-title">New Service Subcategory</h3>
+        <h3 class="box-title">New Service Category</h3>
     </div><!-- /.box-header -->
-    <form role="form" method="post" id="form" name="form" action="{% url 'app:subcategories.store' %}">
+    <form role="form" method="post" id="form" name="form" action="{% url 'app:categories.store' %}">
         {% csrf_token %}
         <div class="table-responsive">
             <table class="table">
@@ -29,19 +29,8 @@
                     <td>
                         <div class="form-group">
                             <label>Name:</label>
-                            <input type="text" id="sub_category_name" name="sub_category_name" class="form-control"
+                            <input type="text" id="category_name" name="category_name" class="form-control"
                                 value="">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <label>Category:</label>
-                            <select name="category_id" class="form-control">
-                                <option value="">Select</option>
-                                {% for category in categories %}
-                                <option value="{{ category.id }}">{{ category.category_name }}</option>
-                                {% endfor %}
-                            </select>
                         </div>
                     </td>
                 </tr>
