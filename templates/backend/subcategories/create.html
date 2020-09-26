@@ -1,0 +1,31 @@
+{% extends "backend/base.html" %} {% load static %} {% block content %}
+<div class="box box-primary">
+    <ol class="breadcrumb">
+        <li><a href="{% url 'app:subcategories.index' %}"><i class="fa fa-list-ul"></i> List Of Subcategories</a></li>
+        <li class="active">New Service Subcategory</li>
+    </ol>
+    <div class="box-header with-border">
+        <h3 class="box-title">New Service Subcategory</h3>
+    </div><!-- /.box-header -->
+    <form role="form" method="post" id="form" name="form" action="{% url 'app:subcategories.store' %}">
+        {% csrf_token %}
+        <div class="table-responsive">
+            <table class="table">
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label>Name:</label>
+                            <input type="text" id="subcategory_name" name="subcategory_name" class="form-control"
+                                value="" required>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="box-footer">
+            <button type="submit" id="submit" name="submit" class="btn btn-success"><i class="fa fa-save"
+                    aria-hidden="true">&nbsp;</i>Save</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

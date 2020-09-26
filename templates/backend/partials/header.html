@@ -1,50 +1,83 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html class="no-js" lang="en">
+<html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
-    <meta name="description" content="Responsive Bootstrap 4 and web Application ui kit." />
-    <title>Sheeky Salon & Barber Admin Area</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
-    <!-- Favicon-->
-    <link rel="stylesheet" href="{% static 'backend/assets/plugins/bootstrap/css/bootstrap.min.css' %}" />
-    <link rel="stylesheet" href="{% static 'backend/assets/plugins/jvectormap/jquery-jvectormap-2.0.3.min.css' %}" />
-    <link rel="stylesheet" href="{% static 'backend/assets/plugins/charts-c3/plugin.css' %}" />
-
-    <link rel="stylesheet" href="{% static 'backend/assets/plugins/morrisjs/morris.min.css' %}" />
-
-    <!-- Custom Css -->
-    <link rel="stylesheet" href="{% static 'backend/assets/css/style.min.css' %}" />
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Sheeky Salon & Barber</title>
+<!-- jQuery 2.2.3 -->
+<script src="{% static 'backend/assets/lte/plugins/jQuery/jquery-2.2.3.min.js' %}"></script>
+<!-- Bootstrap 3.3.6 -->
+<script src="{% static 'backend/assets/lte/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'backend/assets/lte/plugins/jQueryUI/jquery-ui.min.js' %}"></script>
+<link rel="stylesheet" href="{% static 'backend/assets/lte/plugins/jQueryUI/jquery-ui.css' %}">
+<!-- Tell the browser to be responsive to screen width -->
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+<!-- Bootstrap 3.3.6 -->
+<link rel="stylesheet" href="{% static 'backend/assets/lte/bootstrap/css/bootstrap.min.css' %}">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="{% static 'backend/assets/font-awesome/css/font-awesome.min.css' %}">
+<!-- Ionicons -->
+<link rel="stylesheet" href="{% static 'backend/assets/Ionicons/css/ionicons.min.css' %}">
+<!-- Theme style -->
+<link rel="stylesheet" href="{% static 'backend/assets/lte/dist/css/AdminLTE.min.css' %}">
+<!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+        page. However, you can choose any other skin. Make sure you
+        apply the skin class to the body tag so the changes take effect.
+  -->
+<link rel="stylesheet" href="{% static 'backend/assets/lte/dist/css/skins/skin-blue.min.css' %}">
 </head>
+<!--
+BODY TAG OPTIONS:
+=================
+Apply one or more of the following classes to get the
+desired effect
+|---------------------------------------------------------|
+| SKINS         | skin-blue                               |
+|               | skin-black                              |
+|               | skin-purple                             |
+|               | skin-yellow                             |
+|               | skin-red                                |
+|               | skin-green                              |
+|---------------------------------------------------------|
+|LAYOUT OPTIONS | fixed                                   |
+|               | layout-boxed                            |
+|               | layout-top-nav                          |
+|               | sidebar-collapse                        |
+|               | sidebar-mini                            |
+|---------------------------------------------------------|
+-->
 
-<body class="theme-blush">
-    <!-- Page Loader -->
-    <div class="page-loader-wrapper">
-        <div class="loader">
-            <div class="m-t-30">
-                <img class="zmdi-hc-spin" src="{% static 'backend/assets/images/loader.svg' %}" width="48" height="48" alt="Aero" />
-            </div>
-            <p>Please wait...</p>
-        </div>
-    </div>
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
 
-    <!-- Overlay For Sidebars -->
-    <div class="overlay"></div>
+        <!-- Main Header -->
+        <header class="main-header">
 
-    <!-- Main Search -->
-    <div id="search">
-        <button id="close" type="button" class="close btn btn-primary btn-icon btn-icon-mini btn-round">
-        x
-      </button>
-        <form>
-            <input type="search" value="" placeholder="Search..." />
-            <button type="submit" class="btn btn-primary">Search</button>
-        </form>
-    </div>
-</body>
+            <!-- Logo -->
+            <a href="{% url 'app:dashboard' %}" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>S</b>SB</span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>Sh</b>eeky</span>
+            </a>
 
-</html>
+            <!-- Header Navbar -->
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+                <!-- Navbar Right Menu -->
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <!---Notifications-->
+                        {% include 'backend/partials/notification_area.html' %}
+                        <!-- User Account Menu -->
+                        {% include 'backend/partials/user_acc_menu.html' %}
+                    </ul>
+                </div>
+            </nav>
+        </header>
