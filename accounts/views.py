@@ -7,7 +7,7 @@ from cms.models import Customer
 #register
 def register(request):
     """
-    Register user
+    view for Register user
     """
     if request.method == 'POST':
         # Get form values
@@ -47,7 +47,7 @@ def register(request):
 
 #login
 def login(request):
-    """ view for login """
+    """ view for login user """
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -68,6 +68,7 @@ def login(request):
 
 #myaccount
 def myaccount(request):
+    """ view for user account"""
     customer = Customer.objects.all().filter(id=request.user.id)
                                                                         
     context = {
@@ -79,6 +80,7 @@ def myaccount(request):
 
 #register
 def logout(request):
+    """ view for logout user"""
     if request.method == 'POST':
         auth.logout(request)
         messages.success(request, 'You are now logged out!')

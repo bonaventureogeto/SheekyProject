@@ -7,6 +7,7 @@ from .models import Customer, Department, Service, ServiceCategory, ServiceSubCa
 
 #Home page
 def index(request):
+    """ view for index/home page"""
     index = IndexPage.objects.all()
 
     context = {
@@ -18,6 +19,7 @@ def index(request):
 
 #Salon
 def salon(request):
+    """ view for salon"""
     service_category = ServiceCategory.objects.all()
 
     context = {
@@ -29,6 +31,7 @@ def salon(request):
 
 #Barber
 def barber(request):
+    """ view for barber"""
     service_category = ServiceCategory.objects.all()
 
     context = {
@@ -40,6 +43,7 @@ def barber(request):
 
 #serviceCategories
 def serviceCategories(request):
+    """ view for service categories page"""
     service_subcategory = ServiceSubCategory.objects.all()
 
     context = {
@@ -51,6 +55,7 @@ def serviceCategories(request):
 
 #serviceSubCategories
 def serviceSubCategories(request):
+    """ view for service subcategories page """
     service = Service.objects.all()
 
     context = {
@@ -62,6 +67,7 @@ def serviceSubCategories(request):
 
 #servicedetails
 def serviceDetails(request):
+    """ view for service details page """
     service = Service.objects.all()
 
     context = {
@@ -73,6 +79,7 @@ def serviceDetails(request):
 
 #help
 def help(request):
+    """ view for help page """
     help = Help.objects.all()
 
     context = {
@@ -84,6 +91,7 @@ def help(request):
 
 #booking-page
 def bookingPage(request):
+    """ views for booking """
     time = Booking.objects.all()
 
     if request.method =='POST':
@@ -93,6 +101,7 @@ def bookingPage(request):
 
         booking = Booking(appointment_date=appointment_date, appointment_time=appointment_time, user_id=user_id)
 
+        # check if user is logged in in order to book.
         if request.user.is_authenticated:
             booking.save()
 
