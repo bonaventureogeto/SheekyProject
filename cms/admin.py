@@ -46,9 +46,9 @@ class ServiceSubCategoryAdmin(admin.ModelAdmin):
 admin.site.register(ServiceSubCategory, ServiceSubCategoryAdmin)
 
 class BookingAdmin(admin.ModelAdmin):
-    list_display = ('id', 'suggested_time')
-    list_display_links = ('id', 'suggested_time')
-    search_fields = ('suggested_time',)
+    list_display = ('id', 'appointment_date',  'appointment_time')
+    list_display_links = ('id', 'appointment_date', 'appointment_time')
+    search_fields = ('appointment_date', 'appointment_time')
     list_per_page = 25
 
 admin.site.register(Booking, BookingAdmin)

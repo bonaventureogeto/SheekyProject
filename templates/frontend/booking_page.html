@@ -15,36 +15,17 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
-                  <input class="form-control" type="date" required />
+                  <input name="appointment_date" type="date" required />
                 </div>
               </div>
             </div>
-            <span class="form-label">Here are our suggested times</span>
-            <div class="row card">
-              <div class="col-md-4">
-                <div class="form-group">
-                  <select class="form-control" required>
-                    <option value="" selected hidden></option>
-                    {% if time %} {% for value in time %}
-                    <option>{{ value.suggested_time }}</option>
-                    {% endfor %} {% else %}
-                    <div class="col-md-12">
-                      <p>Visit Us Anytime</p>
-                    </div>
-                    {% endif %}
-                  </select>
-                  <span class="select-arrow"></span>
-                </div>
-              </div>
-            </div>
-            <br />
             <span class="form-label">
               Select The Most Convenient Time For You
             </span>
-            <div class="row card">
+            <div class="row">
               <div class="col-md-4">
                 <div class="form-group">
-                  <input type="time" />
+                  <input name="appointment_time" type="time" required />
                 </div>
               </div>
             </div>

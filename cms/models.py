@@ -101,13 +101,13 @@ class Booking(models.Model):
     """
     models for booking
     """
-    appointment_date = models.DateField()
-    suggested_time = models.CharField(max_length=100)
+    appointment_date = models.CharField(max_length=255)
+    appointment_time = models.CharField(max_length=100)
     user_id = models.IntegerField()
 
     def __str__(self):
         """repr for booking"""
-        return self.suggested_time
+        return self.appointment_time
 
 
 class IndexPage(models.Model):

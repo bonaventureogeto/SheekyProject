@@ -3,6 +3,10 @@
  *
  * ------------------------------------------------------------------- */
 
+setTimeout(function () {
+  $("#message").fadeout("slow");
+}, 3000);
+
 $(document).ready(function () {
   // MDB Lightbox Init
   $(function () {

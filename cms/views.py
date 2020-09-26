@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages, auth
 from django.contrib.auth.models import User
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
-from .models import Customer, Service, ServiceCategory, ServiceSubCategory, Booking, IndexPage, Help
+from .models import Customer, Department, Service, ServiceCategory, ServiceSubCategory, Booking, IndexPage, Help
 
 
 #Home page
@@ -29,7 +29,13 @@ def salon(request):
 
 #Barber
 def barber(request):
-    return render(request, 'frontend/barber.html')
+    service_category = ServiceCategory.objects.all()
+
+    context = {
+        'service_category': service_category
+    }
+
+    return render(request, 'frontend/barber.html', context)
 
 
 #serviceCategories
@@ -80,22 +86,21 @@ def help(request):
 def bookingPage(request):
     time = Booking.objects.all()
 
-    # if request.method =='POST':
-    #     appointment_date = request.POST['appointment_date']
-    #     suggested_time = request.POST['suggested_time']
-    #     user_id = request.POST['user_id']
+    if request.method =='POST':
+        appointment_date = request.POST.get('appointment_date')
+        appointment_time = request.POST.get('appointment_time')
+        user_id = request.user.id
 
-    #     booking = Booking(appointment_date=appointment_date, suggested_time=suggested_time, user_id=user_id)
+        booking = Booking(appointment_date=appointment_date, appointment_time=appointment_time, user_id=user_id)
 
-    #     booking.save()
+        if request.user.is_authenticated:
+            booking.save()
 
-    #     messages.success(
-    #         request,
-    #         "We can't wait to meet you :) Your appointment with us has been confirmed. You get 200 points worth KSH 200 for booking your first appointment. If you show up on time you could win yourself a free facial. Please remember to wear your face mask. See You Then."
-    #     )
+            messages.success(
+                request,
+                "We can't wait to meet you :) Your appointment with us has been confirmed. You get 200 points worth KSH. 200 for booking your first appointment. If you show up on time you could win yourself a free facial. Please remember to wear your face mask. See You Then."
+            )
+        else:
+            return render(request, 'frontend/accounts/login.html')
 
-    context = {
-        'time': time
-    }
-
-    return render(request, 'frontend/booking_page.html', context)
+    return render(request, 'frontend/booking_page.html')

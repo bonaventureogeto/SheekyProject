@@ -6,11 +6,10 @@
 <section id="home" class="s-home target-section" data-parallax="scroll" data-image-src="{{ value.background_photo.url }}" data-natural-width=3000 data-natural-height=2000 data-position-y=top style="padding-bottom: 15%;">
 
     <div class="shadow-overlay"></div>
-
     <div class="home-content">
 
         <div class="row home-content__main">
-
+            {% include 'frontend/partials/alerts.html' %}
             <img src="{% static 'frontend/images/logo.png' %}" alt="Homepage">
 
             <div class="home-button" style="padding-left: 15%;">
