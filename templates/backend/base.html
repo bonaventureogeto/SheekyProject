@@ -3,18 +3,20 @@
 <!-- sds -->
 {% include 'backend/partials/header.html' %}
 
-<!-- sds -->
-{% include 'backend/partials/right_icon_sidebar.html' %}
-<!-- sd -->
+ <!-- Left side column. contains the logo and sidebar -->
+<aside class="main-sidebar">
+     <!-- sidebar: style can be found in sidebar.less -->
+     <section class="sidebar">
+        {% include 'backend/partials/sidebar.html' %}
+    </section>
+  <!-- /.sidebar -->
+</aside>
 
-{% include 'backend/partials/left_sidebar.html' %}
-<!-- dssd -->
-{% include 'backend/partials/right_sidebar.html' %}
-<!-- sd -->
-{% block content %}
-<!-- z -->
+<div class="content-wrapper">
+    <section class="content">
+        {% block content %}{% endblock %}
+    </section>
+</div>
 
-<!-- s -->
-{% endblock %}
 <!-- sd -->
 {% include 'backend/partials/footer.html' %}

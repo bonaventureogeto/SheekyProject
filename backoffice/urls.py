@@ -10,4 +10,5 @@ urlpatterns = [
     path('dashboard', authentication.index, name='dashboard'),
     path('subcategories/index', subcategories.index, name='subcategories.index'),
     path('subcategories/create', subcategories.create, name='subcategories.create'),
+    path('subcategories/store', subcategories.store, name='subcategories.store'),
 ]
