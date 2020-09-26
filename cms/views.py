@@ -80,6 +80,20 @@ def help(request):
 def bookingPage(request):
     time = Booking.objects.all()
 
+    # if request.method =='POST':
+    #     appointment_date = request.POST['appointment_date']
+    #     suggested_time = request.POST['suggested_time']
+    #     user_id = request.POST['user_id']
+
+    #     booking = Booking(appointment_date=appointment_date, suggested_time=suggested_time, user_id=user_id)
+
+    #     booking.save()
+
+    #     messages.success(
+    #         request,
+    #         "We can't wait to meet you :) Your appointment with us has been confirmed. You get 200 points worth KSH 200 for booking your first appointment. If you show up on time you could win yourself a free facial. Please remember to wear your face mask. See You Then."
+    #     )
+
     context = {
         'time': time
     }

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages, auth
 from django.contrib.auth.models import User
+from cms.models import Customer
 
 
 #register
@@ -67,8 +68,8 @@ def login(request):
 
 #myaccount
 def myaccount(request):
-    customer = Customer.objects.all()
-
+    customer = Customer.objects.all().filter(id=request.user.id)
+                                                                        
     context = {
         'customer': customer
     }
