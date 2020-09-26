@@ -1,105 +1,39 @@
-{% extends "frontend/base.html" %}
-
-{% load static %}
-
-{% block content %}
+{% extends "frontend/base.html" %} {% load static %} {% block content %}
 
 <section class="card">
-    <div class="container">
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- Main content -->
-            <section class="content">
-                <div class="container-fluid">
-                    <div class="row clearfix">
-                        <div class="col-sm-12">
-                            <h3>Frequently Asked Questions(FAQs)</h3>
-                            <ul class="cbp_tmtimeline">
-                                <li>
-                                    <div class="cbp_tmicon bg-info">
-                                        <i class="zmdi zmdi-label"></i>
-                                    </div>
-                                    <div class="cbp_tmlabel">
-                                        <h5>
-                                            Sign up technical problem? The
-                                            solution is here.
-                                        </h5>
-                                        <p>
-                                            Tolerably earnestly middleton
-                                            extremely distrusts she
-                                            boy now not. Add and offered prepare
-                                            how cordial two
-                                            promise. Greatly who affixed suppose
-                                            but enquire
-                                            compact prepare all put. Added forth
-                                            chief trees but
-                                            rooms think may.
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="cbp_tmicon bg-green">
-                                        <i class="zmdi zmdi-case"></i>
-                                    </div>
-                                    <div class="cbp_tmlabel">
-                                        <h5>How do I book an appointment?</h5>
-                                        <p>You have a meeting at Laborator
-                                            Office Today.</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="cbp_tmicon bg-blush">
-                                        <i class="zmdi zmdi-pin"></i>
-                                    </div>
-                                    <div class="cbp_tmlabel">
-                                        <h5>
-                                            My comments are not showing. What
-                                            might be the
-                                            problem?
-                                        </h5>
-                                        <p>
-                                            It is a long established fact that a
-                                            reader will be
-                                            distracted by the readable content
-                                            of a page when
-                                            looking at its layout.
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="cbp_tmicon bg-orange">
-                                        <i class="zmdi zmdi-camera"></i>
-                                    </div>
-                                    <div class="cbp_tmlabel">
-                                        <h5>How do I earn Sheeky Points?</h5>
-                                        <p>
-                                            Pianoforte principles our unaffected
-                                            not for
-                                            astonished travelling are
-                                            particular.
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="cbp_tmicon bg-green">
-                                        <i class="zmdi zmdi-case"></i>
-                                    </div>
-                                    <div class="cbp_tmlabel">
-                                        <h5>Where is your Location?</h5>
-                                        <p>
-                                            You have a meeting at
-                                            <strong>Laborator Office</strong>
-                                            Today.
-                                        </p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
+  <div class="container">
+    <!-- Content Wrapper. Contains page content -->
+
+    <div class="content-wrapper">
+      <!-- Main content -->
+      <section class="content">
+        <div class="container-fluid">
+          <div class="row clearfix">
+            <div class="col-sm-12">
+              <h3>Frequently Asked Questions(FAQs)</h3>
+              {% if help %} {% for question in help %}
+              <ul class="cbp_tmtimeline">
+                <li>
+                  <div class="cbp_tmicon bg-info">
+                    <i class="zmdi zmdi-label"></i>
+                  </div>
+                  <div class="cbp_tmlabel">
+                    <h5>{{ question.problem }}</h5>
+                    <p>{{ question.solution }}</p>
+                  </div>
+                </li>
+              </ul>
+              {% endfor %} {% else %}
+              <div class="col-md-12">
+                <p>No FAQs Available At The Moment.</p>
+              </div>
+              {% endif %}
+            </div>
+          </div>
         </div>
+      </section>
     </div>
+  </div>
 </section>
 
 {% endblock %}

@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages, auth
 from django.contrib.auth.models import User
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
-from .models import Customer, Service, ServiceCategory, ServiceSubCategory, Booking, IndexPage
+from .models import Customer, Service, ServiceCategory, ServiceSubCategory, Booking, IndexPage, Help
 
 
 #Home page
@@ -67,10 +67,21 @@ def serviceDetails(request):
 
 #help
 def help(request):
-    return render(request, 'frontend/help.html')
+    help = Help.objects.all()
+
+    context = {
+        'help': help
+    }
+
+    return render(request, 'frontend/help.html', context)
 
 
 #booking-page
 def bookingPage(request):
-    return render(request, 'frontend/booking_page.html')
+    time = Booking.objects.all()
 
+    context = {
+        'time': time
+    }
+
+    return render(request, 'frontend/booking_page.html', context)
