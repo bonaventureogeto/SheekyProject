@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import datetime
+from django.contrib.auth.models import User
 
 
 class Customer(models.Model):
@@ -100,7 +101,9 @@ class Booking(models.Model):
     """
     models for booking
     """
+    appointment_date = models.DateField()
     suggested_time = models.CharField(max_length=100)
+    user_id = models.IntegerField()
 
     def __str__(self):
         """repr for booking"""

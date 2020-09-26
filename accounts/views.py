@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages, auth
 from django.contrib.auth.models import User
+from cms.models import Customer
 
 
 #register
@@ -48,18 +49,18 @@ def register(request):
 def login(request):
     """ view for login """
     if request.method == 'POST':
-        email = request.POST['email']
+        username = request.POST['username']
         password = request.POST['password']
 
-        user = auth.authenticate(email=email, password=password)
+        user = auth.authenticate(username=username, password=password)
 
         if user is not None:
             auth.login(request, user)
             messages.success(request, 'You are now logged in')
-            return redirect('booking_page')
+            return redirect('index')
 
         else:
-            messages.error(request, 'Invalid email or password')
+            messages.error(request, 'Invalid username or password')
             return redirect('login')
     else:
         return render(request, 'frontend/accounts/login.html')
@@ -67,8 +68,8 @@ def login(request):
 
 #myaccount
 def myaccount(request):
-    customer = Customer.objects.all()
-
+    customer = Customer.objects.all().filter(id=request.user.id)
+                                                                        
     context = {
         'customer': customer
     }
