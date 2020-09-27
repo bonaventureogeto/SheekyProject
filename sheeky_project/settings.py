@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'cms',
     'backoffice',
     'accounts',
+    'reset_migrations',
 ]
 
 MIDDLEWARE = [
