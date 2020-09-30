@@ -101,6 +101,19 @@ def help(request):
     return render(request, 'frontend/help.html', context)
 
 
+#sheekyhub
+def sheekyhub(request):
+    """ view for sheekyhub page """
+    # sheekyhub = sheekyhub.objects.all()
+
+    # context = {
+    #     'sheekyhub': sheekyhub
+    # }
+
+    return render(request, 'frontend/sheekyhub.html')
+
+
+
 #booking-page
 def bookingPage(request):
     """ views for booking """

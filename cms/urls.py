@@ -10,5 +10,6 @@ urlpatterns = [
     path('service-subcategories', views.serviceSubCategories, name='service_subcategories'),
     path('service-details', views.serviceDetails, name='service_details'),
     path('help', views.help, name='help'),
+    path('sheekyhub', views.sheekyhub, name='sheekyhub'),
     path('booking-page', views.bookingPage, name='booking-page'),
 ]
