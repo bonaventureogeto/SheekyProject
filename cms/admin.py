@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Customer, Service, Department, ServiceCategory, ServiceSubCategory, Booking, IndexPage
+from .models import Customer, Service, Department, Product, ServiceCategory, ServiceSubCategory, Booking, IndexPage
 
 
 class CustomerAdmin(admin.ModelAdmin):
@@ -18,6 +18,15 @@ class ServiceAdmin(admin.ModelAdmin):
     list_per_page = 25
 
 admin.site.register(Service, ServiceAdmin)
+
+
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ('id', 'product_name', 'price')
+    list_display_links = ('id', 'product_name')
+    search_fields = ('product_name', 'price')
+    list_per_page = 25
+
+admin.site.register(Product, ProductAdmin)
 
 
 class DepartmentAdmin(admin.ModelAdmin):

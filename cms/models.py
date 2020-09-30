@@ -75,7 +75,7 @@ class Service(models.Model):
     models for services offered in Barber and Salon 
     """
     name = models.CharField(max_length=100)
-    price = models.IntegerField()
+    price = models.IntegerField(blank=True)
     description = models.TextField()
     staff_assigned = models.CharField(max_length=100)
     department = models.ForeignKey(Department, on_delete=models.CASCADE)
@@ -95,6 +95,20 @@ class Service(models.Model):
     def __str__(self):
         """repr for service"""
         return self.name
+
+
+class Product(models.Model):
+    """
+    model for product
+    """
+    product_name = models.CharField(max_length=255)
+    price = models.IntegerField()
+    description = models.TextField()
+    photo = models.ImageField(upload_to='photos/%Y/%m/%d/')
+
+    def __str__(self):
+        """ repr for product """
+        return self.product_name
 
 
 class Booking(models.Model):

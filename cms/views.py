@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages, auth
 from django.contrib.auth.models import User
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
-from .models import Customer, Department, Service, ServiceCategory, ServiceSubCategory, Booking, IndexPage, Help
+from .models import Customer, Department, Service, Product, ServiceCategory, ServiceSubCategory, Booking, IndexPage, Help
 
 
 #Home page
@@ -39,6 +39,18 @@ def barber(request):
     }
 
     return render(request, 'frontend/barber.html', context)
+
+
+#products
+def products(request):
+    """ view for products"""
+    product = Product.objects.all()
+
+    context = {
+        'product': product
+    }
+
+    return render(request, 'frontend/products.html', context)
 
 
 #serviceCategories
