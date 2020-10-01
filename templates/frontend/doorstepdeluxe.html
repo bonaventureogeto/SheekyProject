@@ -1,0 +1,78 @@
+{% extends "frontend/base.html" %} {% load static %} {% block content %}
+
+<section
+  id="home"
+  class="s-home target-section"
+  data-parallax="scroll"
+  data-image-src="{{ value.background_photo.url }}"
+  data-natural-width="3000"
+  data-natural-height="2000"
+  data-position-y="top"
+  style="padding-bottom: 15%"
+>
+  <div class="home-content">
+    <div class="row home-content__main">
+      {% include 'frontend/partials/alerts.html' %}
+      <img src="{% static 'frontend/images/logo.png' %}" alt="Homepage" />
+
+      <div class="home-button" style="padding-left: 25%">
+        <br />
+        <button><a href="{% url 'salon' %}">Salon</a></button>
+        <button><a href="{% url 'barber' %}">Barber</a></button>
+        <button><a href="{% url 'products' %}">Products</a></button>
+      </div>
+    </div>
+    <!-- end home-content__main -->
+  </div>
+  <!-- end home-content -->
+
+  <ul class="home-social">
+    <li class="home-social-title">Follow Us</li>
+    {% if value.facebook_link %}
+    <li>
+      <a href="{{ value.facebook_link }}">
+        <i class="fab fa-facebook"></i>
+        <span class="home-social-text">Facebook</span>
+      </a>
+    </li>
+    {% endif %} {% if value.twittter_link %}
+    <li>
+      <a href="{{ value.twitter_link }}">
+        <i class="fab fa-twitter"></i>
+        <span class="home-social-text">Twitter</span>
+      </a>
+    </li>
+    {% endif %} {% if value.linkedin_link %}
+    <li>
+      <a href="{{ value.linkedin_link }}">
+        <i class="fab fa-linkedin"></i>
+        <span class="home-social-text">LinkedIn</span>
+      </a>
+    </li>
+    {% endif %} {% if value.instagram_link %}
+    <li>
+      <a href="{{ value.instagram_link }}"
+        ><i class="fab fa-instagram"></i>
+        <span class="home-social-text">Instagram</span>
+      </a>
+    </li>
+    {% endif %} {% if value.youtube_link %}
+    <li>
+      <a href="{{ value.youtube_link }}"
+        ><i class="fab fa-youtube"></i>
+        <span class="home-social-text">YouTube</span>
+      </a>
+    </li>
+    {% endif %} {% if value.snapchat_link %}
+    <li>
+      <a href="{{ value.snapchat_link }}"
+        ><i class="fab fa-snapchat"></i>
+        <span class="home-social-text">Snapchat</span>
+      </a>
+    </li>
+    {% endif %}
+  </ul>
+  <!-- end home-social -->
+</section>
+
+{% endblock %}

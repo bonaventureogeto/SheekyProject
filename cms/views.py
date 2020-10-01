@@ -53,6 +53,13 @@ def products(request):
     return render(request, 'frontend/products.html', context)
 
 
+#doorstepdeluxe
+def doorstepdeluxe(request):
+    """ view for doorstepdeluxe"""
+    
+    return render(request, 'frontend/doorstepdeluxe.html')
+
+
 #serviceCategories
 def serviceCategories(request):
     """ view for service categories page"""
